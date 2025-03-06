@@ -131,6 +131,22 @@ if __name__ == "__main__":
     print("Convolutional RGB Input Shape:", random_input.shape)
     print("Convolutional RGB Output Shape:", output.shape)
 ```
+#### A Brief Theoretical Overview
+Convolutional Layers:
+A convolutional layer applies a set of learnable filters (or kernels) across the input. Each filter slides (or “convolves”) over the input and computes dot products between the filter and the local regions of the input. The result is a feature map that highlights certain patterns (like edges, textures, etc.) in the data.
+
+ - Kernel (Filter): The kernel is a small matrix that is used to extract features from the input.
+For example, a kernel size of 3 (or (3,3) in 2D) means that the filter covers 3 pixels (or cells) in each dimension.
+In the code, using kernel_size=3 or (3,3) means that the filter examines a square of data (e.g., 3 height units, 3 width units) to compute each output value for each input channel, ending up with a cube of [channels,3 height units, 3 width units].
+
+- Stride: Stride defines the step size at which the kernel moves over the input.
+A stride of 1 means the kernel moves one unit at a time, producing a highly overlapping set of patches and, hence, a larger output feature map.
+A stride greater than 1 causes the kernel to skip some positions, leading to a smaller output (i.e., downsampling).
+For example, stride=(1,2) means that the kernel moves one step in the height dimension and two steps in the width dimensions.
+
+- Padding: Padding adds extra “border” cells (usually zeros) around the input before applying the convolution.
+This can help control the spatial dimensions of the output. For example, with a kernel of size 3 and padding of 1, the spatial dimensions of the output can be preserved (when stride is 1) because the padding compensates for the reduction normally caused by the convolution.
+
 ### Step 4: Adapting the Autoencoder for 5-Channel Images
 Earth observation data often comes with additional spectral bands. For a 28×28 image with 5 channels, we update the first and last convolutional layers to handle 5 channels:
 ```
@@ -169,6 +185,7 @@ if __name__ == "__main__":
     print("5-Channel Input Shape:", random_input.shape)
     print("5-Channel Output Shape:", output.shape)
 ```
+
 
 ### Step 5: Incorporating Temporal Dynamics with a 3D Convolutional Autoencoder
 For many Earth observation tasks, you might have images collected over multiple time frames. Let’s now build an autoencoder that processes data with 5 channels and 3 time frames. The input shape becomes [batch, channels, time, height, width] or [batch, 5, 3, 28, 28].
