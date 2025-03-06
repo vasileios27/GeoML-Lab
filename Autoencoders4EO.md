@@ -131,8 +131,7 @@ if __name__ == "__main__":
     print("Convolutional RGB Input Shape:", random_input.shape)
     print("Convolutional RGB Output Shape:", output.shape)
 ```
-#### A Brief Theoretical Overview
-Convolutional Layers:
+#### A Brief Theoretical Overview for Convolutional Layers
 A convolutional layer applies a set of learnable filters (or kernels) across the input. Each filter slides (or “convolves”) over the input and computes dot products between the filter and the local regions of the input. The result is a feature map that highlights certain patterns (like edges, textures, etc.) in the data.
 
  - Kernel (Filter): The kernel is a small matrix that is used to extract features from the input.
@@ -142,7 +141,7 @@ In the code, using kernel_size=3 or (3,3) means that the filter examines a squar
 - Stride: Stride defines the step size at which the kernel moves over the input.
 A stride of 1 means the kernel moves one unit at a time, producing a highly overlapping set of patches and, hence, a larger output feature map.
 A stride greater than 1 causes the kernel to skip some positions, leading to a smaller output (i.e., downsampling).
-For example, stride=(1,2) means that the kernel moves one step in the height dimension and two steps in the width dimensions.
+For example, stride=(1,2) means that the kernel moves one step in the height dimension and two steps in the width dimension.
 
 - Padding: Padding adds extra “border” cells (usually zeros) around the input before applying the convolution.
 This can help control the spatial dimensions of the output. For example, with a kernel of size 3 and padding of 1, the spatial dimensions of the output can be preserved (when stride is 1) because the padding compensates for the reduction normally caused by the convolution.
