@@ -173,7 +173,6 @@ if __name__ == "__main__":
 ### Step 5: Incorporating Temporal Dynamics with a 3D Convolutional Autoencoder
 For many Earth observation tasks, you might have images collected over multiple time frames. Let’s now build an autoencoder that processes data with 5 channels and 3 time frames. The input shape becomes [batch, channels, time, height, width] or [batch, 5, 3, 28, 28].
 
-By using 3D convolutions, we capture both spatial and temporal patterns:
 ```
 class Conv3DAutoencoder(nn.Module):
     def __init__(self):
@@ -220,6 +219,71 @@ if __name__ == "__main__":
     print("3D Input Shape (5 channels, 3 time frames):", random_input.shape)
     print("3D Output Shape:", output.shape)
 ```
+By using 3D convolutions and a kernel of size (3,3,3) we can capture both spatial and temporal patterns at the same time. 
+For this example we assume an input of [batch, 5, 4, 33, 37]:
+```
+class Conv3DAutoencoder(nn.Module):
+    def __init__(self):
+        super(Conv3DAutoencoder, self).__init__()
+        
+        # ---------------------
+        #      Encoder
+        # ---------------------
+        self.encoder = nn.Sequential(
+            # Input: [batch, 5, 4, 33, 37] -> Output: [batch, 16, 4, 17, 19]
+            #stride=(1, 2, 2) -> 1 cell in time will be 1 cell, 2 cells in lat/long will be 1 cell in output. 
+            # padding adds 1 cell so help with the fractions  
+            nn.Conv3d(in_channels=5, out_channels=16, 
+                      kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1)),
+            nn.ReLU(inplace=True),
+            nn.MaxPool3d(kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1)),
+            #Input: [batch, 16, 4, 17, 19] -> Output: [batch, 32, 4, 9, 10]
+            nn.Conv3d(in_channels=16, out_channels=32, 
+                       kernel_size=(3, 3, 3), stride=(1, 2, 2), padding=(1, 1, 1)),
+            nn.ReLU(inplace=True),
+            nn.MaxPool3d(kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1)),
+            #Input: [batch, 32, 4, 9, 10] -> Output: [batch, 64, 2, 5, 5]]
+            nn.Conv3d(in_channels=32, out_channels=64, 
+                       kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1)),
+            nn.ReLU(inplace=True),     
+        )
+    
+
+        # ---------------------
+        #      Decoder
+        # ---------------------
+        self.decoder = nn.Sequential(
+        # Decoder Layer 1: Invert Encoder Layer 3.
+        # We want to upsample from [B,64,2,5,5] -> [B,32,4,9,10]
+        nn.ConvTranspose3d(in_channels=64, out_channels=32, 
+            kernel_size=(3,3,3), stride=(2,2,2), padding=(1,1,1), output_padding=(1,0,1) ),
+        nn.ReLU(inplace=True),
+
+        # Upsample spatially from [B,32,4,9,10] -> [B,16,4,17,19]
+        nn.ConvTranspose3d( in_channels=32, out_channels=16, 
+            kernel_size=(3,3,3), stride=(1,2,2), padding=(1,1,1), output_padding=(0,0,0)),
+        nn.ReLU(inplace=True),
+        
+        # Upsample spatially from [B,16,4,17,19] -> [B,5,4,33,37]
+        nn.ConvTranspose3d( in_channels=16, out_channels=5, 
+            kernel_size=(3,3,3), stride=(1,2,2), padding=(1,1,1), output_padding=(0,0,0) ),
+        nn.Sigmoid()
+    
+        )
+    def forward(self, x):
+        x = self.encoder(x)
+        x = self.decoder(x)
+        return x
+
+if __name__ == "__main__":
+    model = Conv3DAutoencoder()
+    model.eval()
+    random_input = torch.rand(1, 5, 4, 28, 28)
+    output = model(random_input)
+    print("3D Input Shape (5 channels, 3 time frames):", random_input.shape)
+    print("3D Output Shape:", output.shape)
+```
+
 ## Why Does This Matter for Earth Observation?
 Most publicly available pre-trained networks—like those trained on ImageNet—are designed for 3-channel RGB images. This presents a problem for the Earth observation domain, where sensors often capture many more channels (e.g., near-infrared, thermal, etc.) and time series information is vital for monitoring environmental changes. By building autoencoders from scratch, we gain the flexibility to design networks that can process these richer data modalities.
 
