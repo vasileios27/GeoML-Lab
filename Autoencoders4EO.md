@@ -235,7 +235,15 @@ if __name__ == "__main__":
     print("3D Input Shape (5 channels, 3 time frames):", random_input.shape)
     print("3D Output Shape:", output.shape)
 ```
-By using 3D convolutions and a kernel of size (3,3,3) we can capture both spatial and temporal patterns at the same time. 
+#### How Conv3D Works
+A Conv3D layer extends the idea of a 2D convolution into three dimensions. Instead of using a 2D kernel that slides over an image (height and width), a 3D convolution uses a kernel that spans time (or depth) as well as height and width. For instance, a kernel size of (3,3,3) means the convolution is looking at a small cube of data:
+
+- Depth (Time): 3 frames (or slices)
+- Height: 3 pixels
+- Width: 3 pixels
+As the kernel slides over the input volume, it computes dot products at each position to produce a new output volume (often called a feature map) that encodes both spatial and temporal features. This is particularly useful for video analysis or Earth observation data that include temporal information, because it allows the network to capture motion patterns and changes over time, in addition to spatial details.
+
+Example of an AE using 3D convolutions and a kernel of size (3,3,3), capture both spatial and temporal patterns at the same time. 
 For this example we assume an input of [batch, 5, 4, 33, 37]:
 ```
 class Conv3DAutoencoder(nn.Module):
@@ -294,7 +302,7 @@ class Conv3DAutoencoder(nn.Module):
 if __name__ == "__main__":
     model = Conv3DAutoencoder()
     model.eval()
-    random_input = torch.rand(1, 5, 4, 28, 28)
+    random_input = torch.rand(1, 5, 4, 33, 37)
     output = model(random_input)
     print("3D Input Shape (5 channels, 3 time frames):", random_input.shape)
     print("3D Output Shape:", output.shape)
