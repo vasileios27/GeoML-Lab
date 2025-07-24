@@ -1,7 +1,3 @@
-Great! Here's a clear explanation of your code followed by a draft `README.md` file.
-
----
-
 ### ✅ Code Explanation
 
 This Python script automates the **download of ERA5 hourly reanalysis data on single levels** from the **Copernicus Climate Data Store (CDS)** using the `cdsapi` library.
