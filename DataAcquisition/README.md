@@ -1,27 +1,3 @@
-### ✅ Code Explanation
-
-This Python script automates the **download of ERA5 hourly reanalysis data on single levels** from the **Copernicus Climate Data Store (CDS)** using the `cdsapi` library.
-
-**Key Features:**
-
-* Downloads specified meteorological variables (currently U and V wind components at 10m).
-* Retrieves data from **1970 to 2023**.
-* Data is downloaded for **every day and 4 time steps** (00:00, 06:00, 12:00, 18:00).
-* Files are saved in NetCDF format and zipped, one file per year and variable.
-
-**Steps the script performs:**
-
-1. Sets a working directory (`/home/vvatellis/...`) for saving the files.
-2. Initializes the CDS API client.
-3. Iterates over each variable and year.
-4. Submits a retrieval request to the CDS API.
-5. Saves the result as a zipped NetCDF file named by variable and year.
-
----
-
-### 📄 `README.md`
-
-````markdown
 # ERA5 Data Acquisition Script
 
 This script automates the retrieval of hourly ERA5 reanalysis data on single levels from the Copernicus Climate Data Store (CDS) using the `cdsapi` Python package.
