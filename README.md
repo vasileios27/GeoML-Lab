@@ -5,3 +5,9 @@ multi-temporal remote sensing data using state-of-the-art deep learning techniqu
 for grayscale imagery to developing sophisticated convolutional and 3D autoencoders for multi-channel, time-series data, 
 GeoML-Lab aims to empower researchers and practitioners to unlock the full potential of Earth observation in environmental 
 monitoring, land cover classification, and beyond. Contributions and collaborations are warmly welcomed!
+
+## 🌍 ERA5 Data Pipeline: A Starting Point for Climate-Driven ML
+
+As part of this growing initiative, we have begun developing practical workflows for working with key Earth observation datasets. One of the first components of this effort is the [era5_data_pipeline](https://github.com/vasileios27/GeoML-Lab/tree/main/era5_data_pipeline) folder, which contains a complete pipeline for downloading, processing, and preparing ERA5 reanalysis data. This includes automated data acquisition scripts, preprocessing routines, and utilities designed to streamline the use of climate reanalysis data in machine learning workflows.
+
+We envision this lab as a continuously evolving collection of tools and research, and the ERA5 pipeline serves as an example of the types of contributions we aim to grow and share in the near future.
