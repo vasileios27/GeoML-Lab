@@ -12,16 +12,16 @@ The pipeline is composed of several modular steps that handle the entire workflo
 1. **📥 Data Acquisition ([`era_sigle_data_acquisition.py`](#era5-data-acquisition-script))** 
    The process begins with downloading ERA5 hourly single-level reanalysis data from the Copernicus Climate Data Store using the CDS API. This script allows the user to specify the variables, years, and times of interest, and saves the data in zipped NetCDF format, organized by variable and year.
 
-2. **🗜️ Extraction (`extract_all.sh`)**
+2. **🗜️ Extraction ([`extract_all.sh`](#era5_File_extraction_script))**
    Once the data is downloaded, the `extract_all.sh` shell script is used to unzip and extract the NetCDF files from the downloaded `.zip` archives. This prepares the files for subsequent processing.
 
-3. **🗂️ Preprocessing by Region (`datapre.py`)**
+3. **🗂️ Preprocessing by Region ([`datapre.py`](#regional_preprocessing_script))**
    The extracted NetCDF files are then spatially subset and preprocessed using `datapre.py`. This step focuses on trimming the dataset to a region of interest (e.g., Europe), applying any spatial constraints, and merging files if necessary. The result is a region-specific NetCDF file, cleaned and ready for transformation.
 
-4. **🧰 Dataset Preparation for ML (Option 1: `dataGR4ML.py`)**
+4. **🧰 Dataset Preparation for ML ([`dataGR4ML.py`](#general_ml_dataset_preparer))**
    For general-purpose ML workflows, `dataGR4ML.py` transforms the regional NetCDF data into a format suitable for training machine learning models. This typically involves restructuring time-series data, normalizing variables, and saving the final outputs in ML-friendly formats such as NumPy arrays or `.h5` files.
 
-5. **🌧️ Dataset Preparation for Precipitation Studies (Option 2: `PrecipitationDataPrepMultydata.py`)**
+5. **🌧️ Dataset Preparation for Precipitation Studies ([`PrecipitationDataPrepMultydata.py`](#dataset_combiner))**
    For precipitation-related tasks or multi-variable experiments, `PrecipitationDataPrepMultydata.py` handles the preparation of merged datasets. This script combines multiple ERA5 variables, ensuring time-alignment and consistency, and outputs structured data tailored for supervised learning or forecasting tasks.
 
 Together, these components form a flexible and reproducible workflow for transforming raw climate reanalysis data into high-quality datasets for machine learning applications in climate science.
@@ -117,6 +117,113 @@ request = {
     "area": [72, -25, 34, 45]
 }
 ```
+
+# ERA5 File Extraction Script
+
+**Script**: `extract_all.sh`
+
+This Bash script automates the extraction of `.nc` (NetCDF) files from `.zip` archives downloaded from the CDS API. It ensures that each file is uncompressed and stored in a structured format for subsequent preprocessing.
+
+#### 🔧 What It Does
+
+* Iterates through all `.zip` files in a specified input directory (e.g., for a specific variable).
+* Uses `unzip -p` to extract the contents (NetCDF files) directly without creating temporary folders.
+* Saves the extracted `.nc` files into a target directory, maintaining a clear and consistent naming convention.
+
+#### 💡 Usage
+
+Update the following variables in the script:
+
+```bash
+data_dir="ERA5_hourly_data/single_levels/10m_v_component_of_wind"
+extract_dir="ERA5_hourly_data/single_level_extracted"
+```
+
+Then run:
+
+```bash
+bash extract_all.sh
+```
+
+Each `.zip` archive will be extracted to `.nc` format and saved under the specified directory for further processing.
+
+---
+
+# Regional Preprocessing Script
+
+**Script**: `datapre.py`
+
+This script handles the **spatial subsetting** and **temporal alignment** of ERA5 NetCDF files. It focuses on selecting a specific geographic region (e.g., Europe) and prepares the data for merging or transformation.
+
+#### 🔧 What It Does
+
+* Loads individual NetCDF files using `xarray`.
+* Applies latitude and longitude slicing to subset data over a defined region.
+* Optionally trims the temporal resolution or selects specific variables.
+* Saves the processed files into a new folder (`../ProcessedRegionData/`).
+
+#### 💡 Region Example
+
+In the code, Europe is defined as:
+
+```python
+data = data.sel(latitude=slice(72, 34), longitude=slice(-25, 45))
+```
+
+You can modify these bounds to match your region of interest.
+
+---
+
+# General ML Dataset Preparer
+
+**Script**: `dataGR4ML.py`
+
+This script converts preprocessed NetCDF data into a format suitable for general machine learning applications.
+
+#### 🔧 What It Does
+
+* Opens the processed NetCDF files and reads the data using `xarray`.
+* Flattens or reshapes data dimensions (e.g., time × lat × lon → 2D array).
+* Optionally filters by a specific time range.
+* Saves the final dataset into `.npy` or `.h5` formats ready for ML training/testing.
+
+#### 💡 Output Example
+
+```python
+np.save("Europe_precipitation.npy", final_array)
+```
+
+This allows you to use NumPy directly in scikit-learn, PyTorch, or TensorFlow workflows.
+
+---
+
+# Dataset Combiner
+
+**Script**: `PrecipitationDataPrepMultydata.py`
+
+This script is specifically designed to **combine multiple ERA5 variables** (e.g., precipitation, temperature, wind) into a unified ML-ready dataset. It is ideal for studies that rely on **multi-feature learning**, such as flood forecasting, drought detection, or general climate impact studies.
+
+#### 🔧 What It Does
+
+* Loads several NetCDF files at once, each representing a different variable.
+* Applies consistent spatial and temporal alignment.
+* Stacks the data into a multi-dimensional NumPy array:
+  `(time, lat, lon, features)`
+* Optionally normalizes the data per feature.
+* Outputs the full dataset and a label array if precipitation is used as a target variable.
+
+#### 💡 Example Use Case
+
+Creating an input-output dataset for supervised learning:
+
+```python
+X.shape = (n_samples, height, width, n_features)
+y.shape = (n_samples,)  # e.g., for binary classification: heavy vs. light rainfall
+```
+
+---
+
+Would you like me to generate a markdown file with all this content or integrate it directly into your full `README.md`?
 
 
 ## 🔗 References
