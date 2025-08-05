@@ -48,6 +48,48 @@ Each file will be named like:
 
 To add or remove variables, edit the `variables` list in the script.
 
+## 🧾 Request Format
+The code works based on the request, which is constructed in the code. For example 
+```bash
+request = {
+    "product_type": ["reanalysis"],
+    "variable": variable,
+    "year": year,
+    "month": [ "01", ..., "12"],
+    "day": [ "01", ..., "31"],
+    "time": ["00:00", "06:00", "12:00", "18:00"],
+    "data_format": "netcdf",
+    "download_format": "zip",
+}
+```
+ * "product_type": always set to "reanalysis" for ERA5 historical data.
+ * "time": specifies the hourly timestamps to download. ERA5 provides hourly data (00:00 to 23:00), but this script downloads 4 synoptic times (00:00, 06:00, 12:00, 18:00) commonly used in meteorology.
+ * "data_format": format of the output file. Options include:
+ * "netcdf": easier to read with scientific tools and Python libraries.
+ * "grib": more compact, typically used in numerical weather prediction models.
+ * "download_format": downloads the file as a .zip archive.
+   
+  🌍 Optional: Geographical Subsetting
+  To restrict the download to a specific geographic area, add the area key to the request dictionary:
+```bash
+"area": [90, -180, -90, 180],  # Format: [North, West, South, East]
+```
+For example, to download data only over Europe, the request should have the format 
+```bash
+request = {
+    "product_type": ["reanalysis"],
+    "variable": variable,
+    "year": year,
+    "month": [ "01", ..., "12"],
+    "day": [ "01", ..., "31"],
+    "time": ["00:00", "06:00", "12:00", "18:00"],
+    "data_format": "netcdf",
+    "download_format": "zip",
+    "area": [72, -25, 34, 45]
+}
+```
+
+
 ## 🔗 References
 
 * [Copernicus Climate Data Store](https://cds.climate.copernicus.eu)
