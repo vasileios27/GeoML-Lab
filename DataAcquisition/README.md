@@ -98,10 +98,3 @@ request = {
 ---
 
 © 2025 — Developed as part of the GeoML-Lab initiative.
-
-```
-
----
-
-Would you like me to split the script into a cleaner and modular version, or proceed with writing more README content for other data acquisition scripts?
-```
