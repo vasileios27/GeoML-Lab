@@ -11,3 +11,12 @@ monitoring, land cover classification, and beyond. Contributions and collaborati
 As part of this growing initiative, we have begun developing practical workflows for working with key Earth observation datasets. One of the first components of this effort is the [era5_data_pipeline](https://github.com/vasileios27/GeoML-Lab/tree/main/era5_data_pipeline) folder, which contains a complete pipeline for downloading, processing, and preparing ERA5 reanalysis data. This includes automated data acquisition scripts, preprocessing routines, and utilities designed to streamline the use of climate reanalysis data in machine learning workflows.
 
 We envision this lab as a continuously evolving collection of tools and research, and the ERA5 pipeline serves as an example of the types of contributions we aim to grow and share in the near future.
+
+
+🌍 ERA5 Data Pipeline: A Starting Point for Climate-Driven ML
+As part of this growing initiative, we have begun developing practical workflows for working with key Earth observation datasets. One of the first components of this effort is the [era5_data_pipeline](https://github.com/vasileios27/GeoML-Lab/tree/main/era5_data_pipeline) folder, which contains a complete pipeline for downloading, processing, and preparing ERA5 reanalysis data. This includes automated data acquisition scripts, preprocessing routines, and utilities designed to streamline the use of climate reanalysis data in machine learning workflows.
+
+<p align="center"> <img src="plots/era5_pipline.png" alt="ERA5 Data Pipeline Diagram" width="700"/> </p>
+Figure: Overview of the ERA5 data pipeline, from acquisition via Copernicus to the generation of machine learning-ready datasets. The pipeline includes data extraction, NetCDF handling, merging, and regional preprocessing for Europe.
+
+We envision this lab as a continuously evolving collection of tools and research, and the ERA5 pipeline serves as an example of the types of contributions we aim to grow and share in the near future.
