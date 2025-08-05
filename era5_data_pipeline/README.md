@@ -1,3 +1,11 @@
+# 🔄 ERA5 Climate Data Pipeline Overview
+This project outlines a complete pipeline for working with ERA5 climate reanalysis data, from initial acquisition to machine learning–ready datasets. The process begins with downloading hourly reanalysis data from the Copernicus Climate Data Store (CDS) using the official CDS API. The raw data is then extracted, spatially subset, and preprocessed to prepare it for downstream machine learning applications.
+
+The pipeline is designed to support reproducible research and can be adapted for various tasks, including climate impact modeling, weather classification, and extreme event detection.
+
+<p align="center"> <img src="../plots/era5_pipline.png" alt="ERA5 Data Pipeline Diagram" width="700"/> </p>
+Figure: Schematic overview of the ERA5 data pipeline. It includes data acquisition from Copernicus via API, automated extraction and merging of NetCDF files, spatial subsetting for Europe, and the transformation of datasets into ML-ready formats.
+
 # ERA5 Data Acquisition Script
 
 This script automates the retrieval of hourly ERA5 reanalysis data on single levels from the Copernicus Climate Data Store (CDS) using the `cdsapi` Python package.
