@@ -12,7 +12,7 @@ The pipeline is composed of several modular steps that handle the entire workflo
 1. **📥 Data Acquisition ([`era_sigle_data_acquisition.py`](#era5-data-acquisition-script))** 
    The process begins with downloading ERA5 hourly single-level reanalysis data from the Copernicus Climate Data Store using the CDS API. This script allows the user to specify the variables, years, and times of interest, and saves the data in zipped NetCDF format, organized by variable and year.
 
-2. **🗜️ Extraction ([`extract_all.sh`](#era5_File_extraction_script))**
+2. **🗜️ Extraction ([`extract_all.sh`](#era5_file_extraction_script))**
    Once the data is downloaded, the `extract_all.sh` shell script is used to unzip and extract the NetCDF files from the downloaded `.zip` archives. This prepares the files for subsequent processing.
 
 3. **🗂️ Preprocessing by Region ([`datapre.py`](#regional_preprocessing_script))**
