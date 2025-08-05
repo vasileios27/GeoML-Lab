@@ -6,6 +6,27 @@ The pipeline is designed to support reproducible research and can be adapted for
 <p align="center"> <img src="../plots/era5_pipline.png" alt="ERA5 Data Pipeline Diagram" width="700"/> </p>
 Figure: Schematic overview of the ERA5 data pipeline. It includes data acquisition from Copernicus via API, automated extraction and merging of NetCDF files, spatial subsetting for Europe, and the transformation of datasets into ML-ready formats.
 
+
+The pipeline is composed of several modular steps that handle the entire workflow from raw ERA5 data to machine learning–ready datasets. Below is a breakdown of each stage represented in the diagram:
+
+1. **📥 Data Acquisition ([`era_sigle_data_acquisition.py`](#era5-data-acquisition-script))** 
+   The process begins with downloading ERA5 hourly single-level reanalysis data from the Copernicus Climate Data Store using the CDS API. This script allows the user to specify the variables, years, and times of interest, and saves the data in zipped NetCDF format, organized by variable and year.
+
+2. **🗜️ Extraction (`extract_all.sh`)**
+   Once the data is downloaded, the `extract_all.sh` shell script is used to unzip and extract the NetCDF files from the downloaded `.zip` archives. This prepares the files for subsequent processing.
+
+3. **🗂️ Preprocessing by Region (`datapre.py`)**
+   The extracted NetCDF files are then spatially subset and preprocessed using `datapre.py`. This step focuses on trimming the dataset to a region of interest (e.g., Europe), applying any spatial constraints, and merging files if necessary. The result is a region-specific NetCDF file, cleaned and ready for transformation.
+
+4. **🧰 Dataset Preparation for ML (Option 1: `dataGR4ML.py`)**
+   For general-purpose ML workflows, `dataGR4ML.py` transforms the regional NetCDF data into a format suitable for training machine learning models. This typically involves restructuring time-series data, normalizing variables, and saving the final outputs in ML-friendly formats such as NumPy arrays or `.h5` files.
+
+5. **🌧️ Dataset Preparation for Precipitation Studies (Option 2: `PrecipitationDataPrepMultydata.py`)**
+   For precipitation-related tasks or multi-variable experiments, `PrecipitationDataPrepMultydata.py` handles the preparation of merged datasets. This script combines multiple ERA5 variables, ensuring time-alignment and consistency, and outputs structured data tailored for supervised learning or forecasting tasks.
+
+Together, these components form a flexible and reproducible workflow for transforming raw climate reanalysis data into high-quality datasets for machine learning applications in climate science.
+
+
 # ERA5 Data Acquisition Script
 
 This script automates the retrieval of hourly ERA5 reanalysis data on single levels from the Copernicus Climate Data Store (CDS) using the `cdsapi` Python package.
