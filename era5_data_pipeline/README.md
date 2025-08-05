@@ -12,16 +12,16 @@ The pipeline is composed of several modular steps that handle the entire workflo
 1. **📥 Data Acquisition ([`era_sigle_data_acquisition.py`](#era5-data-acquisition-script))** 
    The process begins with downloading ERA5 hourly single-level reanalysis data from the Copernicus Climate Data Store using the CDS API. This script allows the user to specify the variables, years, and times of interest, and saves the data in zipped NetCDF format, organized by variable and year.
 
-2. **🗜️ Extraction ([`extract_all.sh`](#era5_file_extraction_script))**
+2. **🗜️ Extraction ([`extract_all.sh`](#era5-file-extraction-script))**
    Once the data is downloaded, the `extract_all.sh` shell script is used to unzip and extract the NetCDF files from the downloaded `.zip` archives. This prepares the files for subsequent processing.
 
-3. **🗂️ Preprocessing by Region ([`datapre.py`](#regional_preprocessing_script))**
+3. **🗂️ Preprocessing by Region ([`datapre.py`](#regional-preprocessing-script))**
    The extracted NetCDF files are then spatially subset and preprocessed using `datapre.py`. This step focuses on trimming the dataset to a region of interest (e.g., Europe), applying any spatial constraints, and merging files if necessary. The result is a region-specific NetCDF file, cleaned and ready for transformation.
 
-4. **🧰 Dataset Preparation for ML ([`dataGR4ML.py`](#general_ml_dataset_preparer))**
+4. **🧰 Dataset Preparation for ML ([`dataGR4ML.py`](#general-ml-dataset-preparer))**
    For general-purpose ML workflows, `dataGR4ML.py` transforms the regional NetCDF data into a format suitable for training machine learning models. This typically involves restructuring time-series data, normalizing variables, and saving the final outputs in ML-friendly formats such as NumPy arrays or `.h5` files.
 
-5. **🌧️ Dataset Preparation for Precipitation Studies ([`PrecipitationDataPrepMultydata.py`](#dataset_combiner))**
+5. **🌧️ Dataset Preparation for Precipitation Studies ([`PrecipitationDataPrepMultydata.py`](#dataset-combiner))**
    For precipitation-related tasks or multi-variable experiments, `PrecipitationDataPrepMultydata.py` handles the preparation of merged datasets. This script combines multiple ERA5 variables, ensuring time-alignment and consistency, and outputs structured data tailored for supervised learning or forecasting tasks.
 
 Together, these components form a flexible and reproducible workflow for transforming raw climate reanalysis data into high-quality datasets for machine learning applications in climate science.
