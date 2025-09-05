@@ -5,7 +5,7 @@ import cdsapi
 import os
 
 # Define the directory path
-directory_path = "/home/vvatellis/WeatherData/ERA5_hourly_data/single_levels/"
+directory_path = "add_path"
 # Change to a new directory
 os.chdir(directory_path)
 
