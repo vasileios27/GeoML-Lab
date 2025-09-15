@@ -42,7 +42,7 @@ This script automates the retrieval of hourly ERA5 reanalysis data on single lev
 
 - Python 3
 - `cdsapi` package
-- Valid CDS API key configured at `~/.cdsapirc` ([CDS API instructions](https://cds.climate.copernicus.eu/api-how-to))
+- Valid CDS API key configured at `~/.cdsapirc` ([CDS API instructions](https://cds.climate.copernicus.eu/how-to-api))
 
 Install `cdsapi` via pip:
 ```bash
