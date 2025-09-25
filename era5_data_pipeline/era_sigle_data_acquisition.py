@@ -20,10 +20,11 @@ months = [ "01", "02", "03",
         "10", "11", "12"]
 
 
-variables= ["10m_u_component_of_wind", "10m_v_component_of_wind","total_precipitation",
-            "k_index","total_cloud_cover", "convective_precipitation", 
-            "vertically_integrated_moisture_divergence", "total_column_water_vapour", 
-            "total_column_cloud_liquid_water"]
+variables= 
+            # ["10m_u_component_of_wind", "10m_v_component_of_wind","total_precipitation",
+            # "k_index","total_cloud_cover", "convective_precipitation", 
+            # "vertically_integrated_moisture_divergence", "total_column_water_vapour", 
+            # "total_column_cloud_liquid_water"]
 
 
 for variable in variables:

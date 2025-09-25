@@ -12,17 +12,18 @@ import shutil
 
 
 # Step 1: Define Paths
-data_dir =      "/home/vvatellis/WeatherData/ERA5_hourly_data/single_levels/10m_v_component_of_wind/"  # Directory with ZIP files
-extract_dir =   "/home/vvatellis/WeatherData/ERA5_hourly_data/single_level_extracted/"  # Temporary folder for extracted files
-output_dir =    "/home/vvatellis/WeatherData/ERA5_hourly_data/single_level_ERA5_Europ"  # Directory for subsetted Greece region
+data_dir =      "/mnt/dataStorage/ERA5/single_levels/total_precipitation"  # Directory with ZIP files
+extract_dir =   "/mnt/dataStorage/ERA5/extracted_single_levels"  # Temporary folder for extracted files
+output_dir =    "/mnt/dataStorage/ERA5/GR_single_levels"  # Directory for subsetted Greece region
 os.makedirs(extract_dir, exist_ok=True)  # Ensure extraction folder exists
 os.makedirs(output_dir, exist_ok=True)  # Ensure output folder exists
 
 # Step 2: Define Greece Region (Latitude & Longitude Bounds)
-# lat_min, lat_max = 34, 42
-# lon_min, lon_max = 19, 28
-lat_min, lat_max = 35, 72
-lon_min, lon_max = -25, 65
+lat_min, lat_max = 34, 42
+lon_min, lon_max = 19, 28
+# # Step 2: Define Europ Region (Latitude & Longitude Bounds)
+# lat_min, lat_max = 35, 72
+# lon_min, lon_max = -25, 65
 
 # Step 3: Loop Over ZIP Files and Extract
 # Loop over ZIP files in the data directory
