@@ -53,6 +53,16 @@ We assume:
 * Evaluate predictions (e.g., predicting temperature/precipitation trends)
 * Visualize model performance
 
+### 05 — Deploying Model with Docker
+
+In this tutorial, you’ll learn how to containerize your Earth Observation (EO) machine learning model — that is, how to package your FastAPI-based AI service into a Docker container that can be run anywhere.
+
+This tutorial assumes that you already have:
+
+A working FastAPI app that accepts NetCDF input (from Tutorial 04 or earlier)
+
+Basic familiarity with the Linux command line
+
 👉 Goal: Learn how to connect EO data with ML, creating a first end-to-end pipeline.
 
 ---
