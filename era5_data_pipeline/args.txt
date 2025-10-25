@@ -1,0 +1,11 @@
+--data_dir /mnt/dataStorage/ERA5/single_levels/mean_sea_level_pressure/
+--data_dir /mnt/dataStorage/ERA5/single_levels/10m_u_component_of_wind/
+--data_dir /mnt/dataStorage/ERA5/single_levels/10m_v_component_of_wind/
+--data_dir /mnt/dataStorage/ERA5/single_levels/convective_precipitation/
+--data_dir /mnt/dataStorage/ERA5/single_levels/k_index/
+--data_dir /mnt/dataStorage/ERA5/single_levels/surface_pressure/
+--data_dir /mnt/dataStorage/ERA5/single_levels/total_cloud_cover/
+--data_dir /mnt/dataStorage/ERA5/single_levels/total_column_cloud_liquid_water/
+--data_dir /mnt/dataStorage/ERA5/single_levels/total_column_water_vapour/
+--data_dir /mnt/dataStorage/ERA5/single_levels/vertically_integrated_moisture_divergence/
+--extract_dir /mnt/dataStorage/ERA5/extracted_single_levels/

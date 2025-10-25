@@ -1,2 +1,3 @@
-eo_tutorials/
 Autoencoders4EO.md
+era5_data_pipeline/GR_single.nc
+*.nc

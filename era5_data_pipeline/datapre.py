@@ -12,7 +12,7 @@ import shutil
 
 
 # Step 1: Define Paths
-data_dir =      "/mnt/dataStorage/ERA5/single_levels/total_precipitation"  # Directory with ZIP files
+data_dir =      "/mnt/dataStorage/ERA5/2m_temperature"  # Directory with ZIP files
 extract_dir =   "/mnt/dataStorage/ERA5/extracted_single_levels"  # Temporary folder for extracted files
 output_dir =    "/mnt/dataStorage/ERA5/GR_single_levels"  # Directory for subsetted Greece region
 os.makedirs(extract_dir, exist_ok=True)  # Ensure extraction folder exists
@@ -84,7 +84,7 @@ for file in os.listdir(extract_dir):
         ds_region = ds.sel(latitude=slice(lat_max, lat_min), longitude=slice(lon_min, lon_max))
 
         # Step 7: Generate Output Filename
-        output_filename = f"EE_{file}"  # Prefix "GR_" for Greece region
+        output_filename = f"GR_{file}"  # Prefix "GR_" for Greece region
         output_path = os.path.join(output_dir, output_filename)
 
         # Step 8: Save the Subsetted Dataset
