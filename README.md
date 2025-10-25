@@ -14,9 +14,9 @@ As part of this growing initiative, we have begun developing practical workflows
 Figure: Overview of the ERA5 data pipeline, from acquisition via Copernicus to the generation of machine learning-ready datasets. The pipeline includes data extraction, NetCDF handling, merging, and regional preprocessing for Europe.
 
 
-## Comparative Forecasting of Extreme Weather: AI vs NWP Models
+## Comparative Forecasting of Extreme Weather: AI Models
 
-The project focuses on the evaluation and application of advanced AI models for forecasting extreme weather events, with an emphasis on severe precipitation. These models will be compared against established Numerical Weather Prediction (NWP) systems to assess their relative performance. Using long-term reanalysis datasets such as ERA5, the goal is to train and test deep learning architectures capable of predicting rare and intense phenomena. Ultimately, the project aims to measure their accuracy under real-world extreme conditions and explore their potential integration into future early-warning systems.
+The project focuses on the evaluation and application of advanced AI models for forecasting extreme weather events, with an emphasis on severe precipitation. These models will be compared against each other to assess their relative performance. Using long-term reanalysis datasets such as ERA5, the goal is to train and test deep learning architectures capable of predicting rare and intense phenomena. Ultimately, the project aims to measure their accuracy under real-world extreme conditions and explore their potential integration into future early-warning systems.
 
 ---
 
