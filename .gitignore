@@ -1,3 +1,4 @@
 Autoencoders4EO.md
 era5_data_pipeline/GR_single.nc
 *.nc
+extremes/test.csvextremes/*.csv
