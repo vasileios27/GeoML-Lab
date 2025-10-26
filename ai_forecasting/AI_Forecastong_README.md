@@ -25,7 +25,7 @@ Each container follows the same pipeline:
 4. **Output handling** — Results are returned as NetCDF files, ready for visualization or evaluation.
 
 
-<p align="center"> <img src="../plots/GeoML_API_Pipeline.png)" alt="API Pipeline Diagram" width="700"/> </p>
+<p align="center"> <img src="../plots/era5_pipline.png" alt="ERA5 Data Pipeline Diagram" width="700"/> </p>
 
 
 ---
