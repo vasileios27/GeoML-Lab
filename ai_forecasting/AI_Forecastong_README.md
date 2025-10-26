@@ -1,154 +1,89 @@
-Perfect 👍 — here’s a clean and professional **`README.md`** you can add directly to your GeoML-GraphCast repository.
-It documents how to run both the FastAPI service and the container, and how to make inference requests using `curl`.
+
+# 🌦️ GeoML-Lab API — Multi-Model Framework
+
+## 🧭 General Description
+
+All supported AI models — including **GraphCast**, **Pangu-Weather**, — are deployed as **individual containers**.
+Each container exposes a consistent **FastAPI interface** for inference, health checks, and NetCDF file handling, enabling side-by-side benchmarking and interoperability.
+
+The system architecture is designed for:
+
+* **Modularity:** Swap models without changing the API interface
+* **Reproducibility:** Containerized environments ensure consistent dependencies
+* **Scalability:** Ready for local, cluster, or cloud-based deployment
+* **Transparency:** Each model can be independently validated against ERA5 or observational datasets
 
 ---
 
-# 🌦️ GeoML-GraphCast API
+## 🔁 API Workflow Overview
 
-**GeoML-GraphCast** is a containerized FastAPI application that runs DeepMind’s **GraphCast** model for Earth Observation and weather forecasting.
-It accepts NetCDF files as input, performs inference, and returns predictions as downloadable NetCDF files.
+Each container follows the same pipeline:
 
----
+1. **Input ingestion** — User uploads a NetCDF file (ERA5 or observational data).
+2. **Model selection** — The request specifies the AI model (e.g., `GraphCast`, `Pangu-Weather`).
+3. **Inference execution** — The model predicts future atmospheric variables.
+4. **Output handling** — Results are returned as NetCDF files, ready for visualization or evaluation.
 
-## 🚀 Run the Application
 
-### 🧠 Prerequisites
+<p align="center"> <img src="plots/GeoML_API_Pipeline.png)" alt="API Pipeline Diagram" width="700"/> </p>
 
-Make sure you have:
-
-* **Python ≥3.10** and **pip**, or **Docker**
-* **FastAPI**, **Uvicorn**, and dependencies installed (via `requirements.txt`)
-* The trained GraphCast model files under:
-
-  ```
-  app/models/params/
-  app/models/stats/
-  ```
 
 ---
 
-### ▶️ Run Locally (without Docker)
+## ⚙️ Comparative Forecasting of Extreme Weather: AI Models
 
-Start the FastAPI app:
+This project focuses on the **evaluation and application of advanced AI models** for forecasting **extreme weather**, with an emphasis on **severe precipitation** and **medium-range (1–15 day)** forecasts.
+The models will be compared against each other to assess their skill in predicting rare, high-impact phenomena using **ERA5 reanalysis data**.
 
-```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-```
+Ultimately, the project aims to:
 
-✅ The service will be available at:
-
-```
-http://localhost:8000
-```
-
-You can check it’s running:
-
-```bash
-curl http://localhost:8000/healthz
-```
-
-Expected output:
-
-```json
-{"status": "ok"}
-```
+* Measure **accuracy and reliability** under real-world extreme conditions
+* Investigate **model bias** for high quantiles (e.g., 95th–99th percentile precipitation)
+* Enable **integration into early-warning systems** for hydrometeorological hazards
 
 ---
 
-### 🐳 Run Inside Docker
+### 📊 AI Models Under Evaluation
 
-If you’ve already built your Docker image (for example `vasileios27/geo_ml_graphcast`):
-
-```bash
-docker run --rm -p 8000:8000 vasileios27/geo_ml_graphcast
-```
-
-Once started, the API is available at:
-
-```
-http://localhost:8000
-```
-
-You can also check the live docs in your browser at:
-
-```
-http://localhost:8000/docs
-```
+| Model                             | Institution / Developer | Input Data                 | Forecast Range | Strengths                                                          | Known Limitations                    | Reference                  |
+| --------------------------------- | ----------------------- | -------------------------- | -------------- | ------------------------------------------------------------------ | ------------------------------------ | -------------------------- |
+| **GraphCast**                     | DeepMind × ECMWF        | ERA5 Reanalysis            | 6 h → 10 days  | Excellent global skill; very fast inference                        | Underestimates heavy rainfall        | *Lam et al., 2023*         |
+| **Pangu-Weather**                 | Huawei Noah’s Ark Lab   | ERA5 (0.25°)               | Up to 15 days  | High skill at all levels; performs well for winds                  | Smooths local extremes               | *Bi et al., 2023*          |
 
 ---
 
-## ⚙️ Example Inference Request
+## 📘 Detailed Model Documentation
 
-Use the command below to send a **NetCDF input file** and **model name** to the API.
+Full technical details—including **environment setup**, **inference examples**, **evaluation metrics**, and **benchmark scripts**—are provided in the documentation:
 
-```bash
-curl -X POST "http://localhost:8000/echo" \
-  -F "model_name=GraphCast_small-ERA5_1979-2015-resolution_1.0-pressure_levels_13-mesh_2to5-precipitation_input_and_output.npz" \
-  -F "file=@/home/vvatellis/WeatherData/4castingModels/graphcast/graphcast/data/examples/source-era5_date-2022-01-01_res-1.0_levels-13_steps-04.nc;type=application/netcdf" \
-  -o prediction3.nc
-```
+👉 [**AI Model Guide**](./docs/AI_Model_Guide.md)
 
-**Explanation:**
+That document explains:
 
-* `model_name`: Selects the model checkpoint to use
-* `file`: The input NetCDF file
-* `-o prediction3.nc`: Saves the predicted output locally as `prediction3.nc`
-
----
-
-## 🧩 Folder Structure
-
-```
-GeoML_graphcast/
-│
-├── app/
-│   ├── main.py              # FastAPI entrypoint
-│   ├── models/              # Model checkpoints and stats
-│   │   ├── params/
-│   │   └── stats/
-│   └── __init__.py
-│
-├── requirements.txt         # Python dependencies
-├── Dockerfile               # Container configuration
-└── README.md                # You are here
-```
+* Model-specific environment variables and Docker build instructions
+* Data preprocessing using **ERA5**
+* Model inference endpoints and expected I/O formats
+* Recommended **extreme-aware metrics**: MCC, CSI, ROC, BSS, and RPSS
 
 ---
 
 ## 🧠 Notes
 
-* Input and output formats are **NetCDF (.nc)**
-* The `/echo` endpoint runs the model and returns predictions as a `.nc` file
-* Typical prediction outputs are stored temporarily and streamed back to the user
-* Model checkpoints must be located under `app/models/params/` before running
+* All models operate via **FastAPI microservices** with consistent endpoints (`/echo`, `/healthz`).
+* **NetCDF (.nc)** remains the standard format for all input and output data.
+* Containers are designed to run **independently or in parallel**, allowing distributed benchmarking.
+* Each container can be deployed via:
 
----
-
-## 🧪 Example Health Check
-
-```bash
-curl http://localhost:8000/healthz
-```
-
-Expected response:
-
-```json
-{"status": "ok"}
-```
-
----
-
-## 🧰 Troubleshooting
-
-| Issue                                                  | Fix                                                                       |
-| ------------------------------------------------------ | ------------------------------------------------------------------------- |
-| `RuntimeError: Form data requires "python-multipart"`  | Run `pip install python-multipart`                                        |
-| `ERROR: Cannot find command 'git'` during Docker build | Add `apt-get install git` to your Dockerfile                              |
-| Push rejected by GitHub (file >100MB)                  | Use `.gitignore` or [Git LFS](https://git-lfs.github.com) for large files |
+  ```bash
+  docker run --rm -p 8000:8000 geolab/<model-name>
+  ```
+* Results can be aggregated and compared through a common evaluation pipeline (to be detailed in `AI_Model_Guide.md`).
 
 ---
 
 ## 📄 License
 
-© 2025 Vasileios Vatellis — GeoML-Lab
-This project is part of the **GeoML-Lab** initiative for developing AI services in Earth Observation.
+© 2025 Vasileios Vatellis — **GeoML-Lab**
+Developed as part of the **GeoML-Lab initiative** for advancing AI-driven Earth observation and medium-range extreme weather forecasting.
+
+---
