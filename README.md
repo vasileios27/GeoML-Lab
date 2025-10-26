@@ -39,7 +39,7 @@ Each model was selected based on its performance in recent peer-reviewed studies
 
 A full technical overview—including **setup guides**, **input/output formats**, and **evaluation workflows**—is provided in the supplementary documentation:
 
-👉 [**Model Documentation and Implementation Guide**](https://github.com/vasileios27/GeoML-Lab/tree/main/AI_Model_Guide.md)
+👉 [**Model Documentation and Implementation Guide**](https://github.com/vasileios27/GeoML-Lab/blob/main/ai_forecasting/AI_Forecastong_README.md)
 
 That page contains:
 
