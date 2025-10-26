@@ -18,6 +18,37 @@ Figure: Overview of the ERA5 data pipeline, from acquisition via Copernicus to t
 
 The project focuses on the evaluation and application of advanced AI models for forecasting extreme weather events, with an emphasis on severe precipitation. These models will be compared against each other to assess their relative performance. Using long-term reanalysis datasets such as ERA5, the goal is to train and test deep learning architectures capable of predicting rare and intense phenomena. Ultimately, the project aims to measure their accuracy under real-world extreme conditions and explore their potential integration into future early-warning systems.
 
+Perfect — your README introduction already establishes the purpose clearly.
+Here’s a continuation you can paste directly below it, including a well-structured **AI model comparison table** and a **link placeholder** for your detailed model documentation.
+
+---
+
+### AI Models Selected for Medium-Range Extreme Forecasting
+
+The following AI models will be evaluated for their capability to forecast **severe precipitation and other extreme weather events** within the **medium-range (1–15 days)** window.
+Each model was selected based on its performance in recent peer-reviewed studies and its potential for transferability to reanalysis-driven training (e.g., ERA5).
+
+| Model                             | Institution / Developer   | Input Data                   | Forecast Range | Strengths                                                             | Known Limitations                                                        | Reference                         |
+| --------------------------------- | ------------------------- | ---------------------------- | -------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------- |
+| **GraphCast**                     | DeepMind × ECMWF          | ERA5 Reanalysis              | 6 h → 10 days  | Strong global generalization; fast inference; open-source baseline    | Underestimates heavy rainfall; coarse resolution for convective extremes | *Lam et al., 2023*                |
+| **Pangu-Weather**                 | Huawei Noah’s Ark Lab     | ERA5 (0.25°)                 | Up to 15 days  | High skill at surface/upper-air levels; better extreme-wind detection | Requires large compute; some smoothing of precipitation tails            | *Bi et al., 2023*                 |
+
+---
+
+### Detailed Model Instructions and Usage
+
+A full technical overview—including **setup guides**, **input/output formats**, and **evaluation workflows**—is provided in the supplementary documentation:
+
+👉 [**Model Documentation and Implementation Guide**](https://github.com/vasileios27/GeoML-Lab/tree/main/AI_Model_Guide.md)
+
+That page contains:
+
+* Installation and environment setup for each model
+* Data preprocessing workflow using ERA5 reanalysis
+* Evaluation metrics (MCC, CSI, ROC, BSS, RPSS)
+* Benchmark scripts for comparing extreme-forecast performance
+
+
 ---
 
 © 2025 — Developed as part of the GeoML-Lab initiative.
