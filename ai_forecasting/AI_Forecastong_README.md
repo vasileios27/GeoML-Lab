@@ -25,7 +25,7 @@ Each container follows the same pipeline:
 4. **Output handling** — Results are returned as NetCDF files, ready for visualization or evaluation.
 
 
-<p align="center"> <img src="plots/GeoML_API_Pipeline.png)" alt="API Pipeline Diagram" width="700"/> </p>
+<p align="center"> <img src="../plots/GeoML_API_Pipeline.png)" alt="API Pipeline Diagram" width="700"/> </p>
 
 
 ---
@@ -56,7 +56,7 @@ Ultimately, the project aims to:
 
 Full technical details—including **environment setup**, **inference examples**, **evaluation metrics**, and **benchmark scripts**—are provided in the documentation:
 
-👉 [**AI Model Guide**](./docs/AI_Model_Guide.md)
+👉 [**AI Model Guide**](https://github.com/vasileios27/GeoML-Lab/blob/main/ai_forecasting/AI_Model_Guide.md)
 
 That document explains:
 
