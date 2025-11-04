@@ -20,7 +20,7 @@ These definitions form the foundation for:
 An **extreme event** is defined as an atmospheric or hydrological phenomenon that **significantly deviates from the local climatological distribution**, typically beyond a specified percentile threshold.
 In most analyses, GeoML-Lab adopts:
 
-* **Upper-tail extremes:** 95th–99th percentile (e.g., heavy rain, heatwaves, high wind)
+* **Upper-tail extremes:** 95th percentile (e.g., heavy rain, heatwaves, high wind)
 * **Lower-tail extremes:** 1st–5th percentile (e.g., cold spells, low pressure anomalies)
 
 All thresholds are computed over a **30-year reference climatology (e.g., 1991–2020)** using **ERA5 reanalysis** or compatible datasets.
@@ -40,29 +40,11 @@ All thresholds are computed over a **30-year reference climatology (e.g., 1991�
 
 ---
 
-## 🧮 Example: ERA5 Threshold Computation
+## ERA5 Threshold over Greece for total precipitation
 
-The following example computes the **95th percentile rainfall threshold** for a location or grid cell:
+<p align="center"> <img src="../plots/threshold_plot.png" alt="tp threshold plot" width="700"/> </p>
 
-```python
-import xarray as xr
-import numpy as np
-
-ds = xr.open_dataset("ERA5_precip_1991_2020.nc")
-tp = ds["tp"] * 1000  # convert to mm
-
-threshold = tp.quantile(0.95, dim="time")
-threshold.to_netcdf("precip_95th_threshold.nc")
-```
-
-To classify an extreme event:
-
-```python
-extreme_event = (tp > threshold)
-```
-
----
-
+The figure above shows the threshold values of total precipitation (tp_q95_alltime) across Greece, calculated for each grid point. These thresholds serve as reference levels for identifying local extremes. During analysis, any grid cell exceeding its corresponding threshold will be marked as an extreme grid point. If more than 150 grid points are classified as extreme in a single time snapshot, that day will be defined as an extreme precipitation day.
 ## 🧠 Notes on Labeling for Machine Learning
 
 * Events are **binary-labeled** as 1 (extreme) or 0 (non-extreme).
