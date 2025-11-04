@@ -45,20 +45,8 @@ All thresholds are computed over a **30-year reference climatology (e.g., 1991�
 <p align="center"> <img src="../plots/threshold_plot.png" alt="tp threshold plot" width="700"/> </p>
 
 The figure above shows the threshold values of total precipitation (tp_q95_alltime) across Greece, calculated for each grid point. These thresholds serve as reference levels for identifying local extremes. During analysis, any grid cell exceeding its corresponding threshold will be marked as an extreme grid point. If more than 150 grid points are classified as extreme in a single time snapshot, that day will be defined as an extreme precipitation day.
-## 🧠 Notes on Labeling for Machine Learning
-
-* Events are **binary-labeled** as 1 (extreme) or 0 (non-extreme).
-* Compound events may use **multi-label encoding** (e.g., `[rain, wind] = [1,1]`).
-* For probabilistic models, labels are used to compute **Brier** and **ROC** scores.
-* ERA5 grid-level thresholds are saved under `/data/thresholds/` for model input pipelines.
-
----
 
 ## 🧾 License
 
 © 2025 Vasileios Vatellis — **GeoML-Lab Initiative**
 All definitions and figures are provided for research and non-commercial purposes.
-
----
-
-Would you like me to now generate a **simple diagram (`extreme_event_thresholds.png`)** that visually explains how ERA5 data → percentile threshold → extreme classification works (for inclusion under `/extremes/images/`)?
