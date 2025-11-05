@@ -29,15 +29,11 @@ All thresholds are computed over a **30-year reference climatology (e.g., 1991�
 
 ## 🌧️ Categories of Extreme Events
 
-| Type                      | Definition                                                    | Typical Threshold                                 | Relevant Variables   | ERA5 Codes    |
-| ------------------------- | ------------------------------------------------------------- | ------------------------------------------------- | -------------------- | ------------- |
-| **Extreme Precipitation** | Daily or hourly rainfall exceeding local 95th–99th percentile | >95th percentile of total precipitation (`tp`)    | `tp`, `cape`, `tcwv` | 228, 59       |
-| **Heatwaves**             | ≥3 consecutive days above 90th percentile of max temperature  | 90th percentile of `t2m` or `tmax`                | `t2m`, `tmax`, `rh`  | 167, 201      |
-| **Cold Spells**           | ≥3 consecutive days below 10th percentile of min temperature  | 10th percentile of `t2m` or `tmin`                | `t2m`, `tmin`        | 202           |
-| **Wind Extremes**         | 10-m wind speed above 95th percentile                         | >95th percentile of `u10`, `v10`                  | `u10`, `v10`, `ws10` | 165, 166      |
-| **Storms / Cyclones**     | Closed low-pressure systems with extreme wind/rain signatures | <5th percentile of sea-level pressure + high wind | `msl`, `u10`, `v10`  | 151, 165, 166 |
-| **Compound Events**       | Simultaneous or sequential extremes (e.g., rain + wind)       | Joint exceedance of multiple variables            | Combined             | —             |
+| Type                      | Definition                                                    | Typical Threshold                                 | Relevant Variables   | 
+| ------------------------- | ------------------------------------------------------------- | ------------------------------------------------- | -------------------- | 
+| **Extreme Precipitation** | The accumulated liquid and frozen water, comprising rain and snow, that falls to the Earth's surface | >95th percentile of total precipitation (`tp`)    | `tp`, `cape`, `tcwv` | 
 
+👉 [**tp parameter detail**](https://codes.ecmwf.int/grib/param-db/228) 
 ---
 
 ## ERA5 Threshold over Greece for total precipitation
