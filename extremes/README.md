@@ -47,6 +47,12 @@ The figure below presents the monthly frequency of extreme precipitation days id
 The data originate from the `unique_extreme_days.txt` file, which lists all detected extreme days. Each bar represents the total number of extreme days occurring within a given month, allowing for a clear visualization of seasonal patterns and the temporal distribution of extreme precipitation events throughout the study period.
 
 <p align="center"> <img src="../plots/Frequency_of_Extreme_Days_per_Month.png" alt="Frequency of Extreme" width="700"/> </p>
+
+The following figure illustrates an example of an extreme precipitation event over Greece, as identified by the threshold-based detection method.
+It shows the spatial distribution of total precipitation for a selected extreme day, highlighting the regions that experienced the most intense rainfall. Areas with higher precipitation values correspond to grid points exceeding their local thresholds, providing a clear visual depiction of how extreme precipitation manifests spatially across the country during such events.
+
+<p align="center"> <img src="../plots/extreme_tp.png" alt="Extreme tp example" width="700"/> </p>
+
 ## 🧾 License
 
 © 2025 Vasileios Vatellis — **GeoML-Lab Initiative**
