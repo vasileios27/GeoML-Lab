@@ -35,19 +35,8 @@ Each model was selected based on its performance in recent peer-reviewed studies
 ### What We Define as an Extreme Event
 
 Within **GeoML-Lab**, an *extreme event* refers to an atmospheric or hydrological occurrence that significantly deviates from climatological norms, producing severe societal or environmental impacts.
-
-Our operational definition follows international and research standards (IPCC, ECMWF, WMO):
-
-| Category                  | Definition                                                                       | Threshold / Criteria                               | Typical Variables      |
-| ------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------------- |
-| **Extreme Precipitation** | Rainfall events exceeding the local 95th–99th percentile over a 30-year baseline | Daily or hourly totals above percentile thresholds | `tp`, `precip`, `cape` |
-| **Heatwaves**             | ≥3 consecutive days with temperature above the 90th percentile                   | Local percentile of `t2m`                          | `t2m`, `tmax`, `rh`    |
-| **Cold Spells**           | ≥3 consecutive days with temperature below the 10th percentile                   | Based on daily minimum `t2m`                       | `t2m`, `tmin`          |
-| **Strong Wind Events**    | Wind speed above 95th percentile                                                 | 10-m wind components                               | `u10`, `v10`           |
-| **Compound Events**       | Concurrent or sequential extremes (e.g., heavy rain + high wind)                 | Joint percentile exceedance                        | Combined fields        |
-
 👉 For more detailed explanations, visual examples, and regional thresholds, see:
-📘 [**Extreme Event Definitions and Examples**](./extremes/definitions.md)
+📘 [**Extreme Event Definitions and Examples**](./extremes/README.md)
 
 That document includes:
 
