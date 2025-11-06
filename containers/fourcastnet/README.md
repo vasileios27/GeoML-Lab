@@ -25,8 +25,8 @@ source env_fourecastnet/bin/activate      # on Linux or macOS
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
-
-## 2. Model checkpoints
+ 
+## 2. Model checkpoints www
 
 The full instractions of ai-models from ECMWF can be found in the link below.
 👉 [**ai-models from ECMWF**](https://github.com/ecmwf-lab/ai-models)
@@ -34,16 +34,11 @@ The full instractions of ai-models from ECMWF can be found in the link below.
 Download pretrained params and stats:
 ```bash
 pip install ai-models
-pip install ai-models-graphcast
-```
-Install GraphCast from git
-```bash
-git clone https://github.com/google-deepmind/graphcast.git
-pip install -e /home/vasileios_vatelis/GeoML/GeoML_graphcast/graphcast/
+pip install ai-models-fourecastnet
 ```
 
 ```bash
-ai-models --download-assets --assets ./assets graphcast
+ai-models --download-assets --assets ./assets fourecastnet
 ```
 
 ## 3. Running inference
