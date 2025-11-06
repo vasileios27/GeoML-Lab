@@ -14,13 +14,20 @@ pip install -r requirements.txt
 
 ## 2. Model checkpoints
 
+The full instractions of ai-models from ECMWF can be found in the link below.
+👉 [**ai-models from ECMWF**](https://github.com/ecmwf-lab/ai-models)
+
 Download pretrained params and stats:
 ```bash
-
+pip install ai-models
+pip install ai-models-graphcast
+```
+Install GraphCast from git
+```bash
+git clone https://github.com/google-deepmind/graphcast.git
+pip install -e /home/vasileios_vatelis/GeoML/GeoML_graphcast/graphcast/
 ```
 
-## 3. Running inference
-
 ```bash
-
+ai-models --download-assets --assets ./assets graphcast
 ```

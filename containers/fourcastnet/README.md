@@ -1,5 +1,4 @@
-# Ppangu-Weather — Installation & Local Execution Guide
-
+# FourCastNet — Installation & Local Execution Guide
 ## **1. GPU Environment**
 
 This environment is configured for **GPU acceleration** using:
@@ -11,29 +10,16 @@ These versions are compatible with **Python 3.10**, **JAX**, and **PyTorch ≥ 2
 
 #### 🧰 Installation Notes
 
-If your system does not already include the correct NVIDIA drivers and CUDA/cuDNN libraries, you can install them manually.
+If your system does not already include the correct NVIDIA drivers and CUDA libraries, you can install them manually.
 
 Official installation instructions and downloadable packages are available at:
 👉 [**NVIDIA CUDA Download Page (Ubuntu 24.04, x86_64)**](https://developer.nvidia.com/cuda-12-8-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=24.04)
-👉 [**NVIDIA cuDNN Download Page (Ubuntu 24.04, x86_64)**](https://developer.nvidia.com/cudnn-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=24.04&target_type=deb_local&Configuration=Full)
-
-
-
-#### ✅ Verify Installation
-
-```bash
-nvidia-smi
-nvcc --version
-```
-
 ## 1. Environment setup
-
-
 ```bash
 # Create a virtual environment named "graphcast" using Python 3.10
-python3.10 -m venv env_panguweather
+python3.10 -m venv env_fourecastnet
 # Activate the environment
-source env_panguweather/bin/activate      # on Linux or macOS
+source env_fourecastnet/bin/activate      # on Linux or macOS
 
 # Upgrade pip and install dependencies
 pip install --upgrade pip
@@ -42,9 +28,22 @@ pip install -r requirements.txt
 
 ## 2. Model checkpoints
 
+The full instractions of ai-models from ECMWF can be found in the link below.
+👉 [**ai-models from ECMWF**](https://github.com/ecmwf-lab/ai-models)
+
 Download pretrained params and stats:
 ```bash
+pip install ai-models
+pip install ai-models-graphcast
+```
+Install GraphCast from git
+```bash
+git clone https://github.com/google-deepmind/graphcast.git
+pip install -e /home/vasileios_vatelis/GeoML/GeoML_graphcast/graphcast/
+```
 
+```bash
+ai-models --download-assets --assets ./assets graphcast
 ```
 
 ## 3. Running inference
