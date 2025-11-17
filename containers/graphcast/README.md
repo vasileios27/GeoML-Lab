@@ -14,109 +14,179 @@ Official installation instructions and downloadable packages are available at:
 👉 [**NVIDIA CUDA Download Page (Ubuntu 24.04, x86_64)**](https://developer.nvidia.com/cuda-12-8-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=24.04)
 This README documents the installation steps and requirements for running **GraphCast** with **ai-models** in a stable Python 3.10 environment.
 
-### ⚙️ 1. Create and Activate Environment
+# GraphCast Installation README
+
+This README summarizes all steps taken to successfully install **GraphCast**, **ai-models**, and the supporting libraries in the custom environment `env_graphcast`.
+
+---
+
+## 1. Create and Activate the Python Environment
+
+A dedicated environment was created to isolate GraphCast, JAX, and AI Models.
 
 ```bash
-# From your project root
 python3 -m venv env_graphcast
 source env_graphcast/bin/activate
 ```
 
-### 📦 2. Install Core Dependencies (Pinned for Compatibility)
+---
 
-Create a file called `constraints.txt` with the following content:
+## 2. Install JAX with CUDA 12 Support
 
-```txt
-jax==0.6.0
-jaxlib==0.6.0
-jax-cuda12-plugin==0.6.0
-jax-cuda12-pjrt==0.6.0
-dm-haiku==0.0.10
-chex==0.1.90
-optax==0.2.4
-numpy==1.26.4
-scipy==1.15.3
-ai-models==0.7.4
-ai-models-graphcast==0.1.0
-```
-
-Then install with:
+We installed JAX and JAXLIB manually to match the system GPU setup.
 
 ```bash
-pip install --force-reinstall -r constraints.txt
+pip install --upgrade "jax[cuda12]" --find-links https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
-> 💡 *All packages are pinned to maintain compatibility with JAX 0.6.0 and Python 3.10.*
-
----
-
-### 📚 3. Install GraphCast (from source, no dependency changes)
-
-Clone and install GraphCast in **editable mode** without dependencies:
+After installation, device availability was tested:
 
 ```bash
-cd ~/GeoML/GeoML_graphcast
-git clone https://github.com/google-deepmind/graphcast.git
-cd graphcast
-pip install --no-deps -e .
+python3 -c "import jax; print(jax.devices())"
 ```
 
----
-
-### 🧩 4. Install Missing Runtime Packages (No-Dependency Mode)
-
-Some submodules require additional lightweight libraries. Install them safely:
+We fixed CUDA library issues by ensuring `LD_LIBRARY_PATH` was **unset** so JAX could correctly detect system CUDA libs:
 
 ```bash
-pip install --no-deps jraph==0.0.6.dev0
-pip install --no-deps trimesh==3.23.5
+unset LD_LIBRARY_PATH
 ```
+
+The GPU detection succeeded afterwards.
 
 ---
 
-### 🧪 5. Verify the Installation
+## 3. Install Haiku
 
-Run the following test:
+DeepMind's Haiku library is required by GraphCast.
+
+Compatible version:
 
 ```bash
-python - <<'PY'
-import importlib, jraph, trimesh, graphcast
-print("jraph ok:", jraph.__version__)
-print("trimesh ok:", trimesh.__version__)
-m = importlib.import_module("graphcast.graphcast")
-print("graphcast.graphcast ok:", m.__file__)
-PY
+pip install dm-haiku==0.0.12
 ```
 
-Expected output:
-
-```
-jraph ok: 0.0.6.dev0
-trimesh ok: 3.23.5
-graphcast.graphcast ok: /.../graphcast/graphcast/graphcast.py
-```
-
----
-
-### 🌍 6. Download GraphCast Assets via ai-models
+Verification:
 
 ```bash
-ai-models --download-assets --assets ./assets graphcast
+python3 -c "import haiku as hk; print('Haiku OK')"
 ```
 
-> If you see `INFO Total time: ... seconds` with no errors, your setup is complete.
+---
+
+## 4. Install GraphCast (without dependencies)
+
+GraphCast was installed manually without dependencies to avoid overwriting JAX.
+
+```bash
+pip install git+https://github.com/google-deepmind/graphcast.git --no-deps
+```
+
+Dependencies were added manually later.
 
 ---
 
-### 🧾 Notes
+## 5. Install ai-models and ai-models-graphcast
 
-* Python version: **3.10**
-* CUDA: **12.x**
-* JAX stack: **0.6.0**
-* ai-models: **0.7.4**
-* GraphCast: **editable install** (from local repo)
-* No package upgrades beyond the pinned list
+These packages integrate GraphCast into the ECMWF `ai-models` system.
+
+Installed without dependencies:
+
+```bash
+pip install ai-models --no-deps
+pip install ai-models-graphcast --no-deps
+```
 
 ---
 
-Would you like me to include an **environment.yml** (for conda) or a **requirements.txt** that mirrors the pinned setup from this README? That would make your setup reproducible on another machine (e.g., Google Cloud or HPC).
+## 6. Install Required Dependencies Manually
+
+The `ai-models` package reported missing dependencies, which we installed one by one:
+
+### Required ECMWF/GraphCast dependencies
+
+```bash
+pip install cdsapi
+pip install earthkit-data
+pip install earthkit-regrid
+pip install ecmwf-api-client
+pip install ecmwf-opendata\pip install gputil\pip install dm-tree
+pip install matplotlib
+```
+
+Some required system libraries were also installed for packages like `cartopy` and `rtree`.
+
+---
+
+## 7. Fix NumPy Version Compatibility
+
+`ai-models` requires `numpy < 2`, so we downgraded:
+
+```bash
+pip install "numpy<2" --upgrade
+```
+
+---
+
+## 8. Configure Earthkit Cache Directory
+
+We configured a custom cache directory by creating:
+
+```
+~/.config/earthkit/config.yaml
+```
+
+With contents:
+
+```yaml
+data:
+  cache_dir: "/mnt/disks/GeoML/earthkit_cache"
+  archive_dir: "/mnt/disks/GeoML/earthkit_data"
+```
+
+This ensures Earthkit stores data on the mounted disk.
+
+---
+
+## 9. Locating and Understanding ai-models GraphCast Runner
+
+We explored the installed package to enable customization:
+
+```
+/path/to/env_graphcast/lib/python3.12/site-packages/ai_models_graphcast/model.py
+```
+
+This file contains the GraphCast model wrapper, JAX execution, and all logic executed when running:
+
+```bash
+ai-models graphcast ...
+```
+
+This is the correct file to modify if enabling custom GPU logic or multi-GPU usage.
+
+---
+
+## 10. Running GraphCast
+
+Typical example:
+
+```bash
+ai-models --assets ./assets/ --input cds --date 20230110 --time 0000 --lead-time 24 graphcast
+```
+
+If needed, a specific GPU can be selected via:
+
+```bash
+CUDA_VISIBLE_DEVICES=1 ai-models ... graphcast
+```
+
+---
+
+## Installation Completed
+
+At this point, GraphCast, ai-models, and all auxiliary dependencies are installed and working in the `env_graphcast` environment.
+
+Further customization (e.g., multi-GPU execution) can now be performed directly in:
+
+```
+ai_models_graphcast/model.py
+```
