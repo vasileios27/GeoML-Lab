@@ -50,6 +50,15 @@ Ultimately, the project aims to:
 
 ### 📊 AI Models Under Evaluation
 
+| Model                             |  Input Data               | Forecast Range               | Reference      |
+| --------------------------------- | ------------------------- | ---------------------------- | -------------- |
+| **FoureCastNet**                  |  ERA5 Reanalysis          | 6 h → 10 days  | [*Pathak et al., 2022*](https://doi.org/10.48550/arXiv.2202.11214) |
+| **GraphCast**                     |  ERA5 Reanalysis          | 6 h → 10 days  | [*Lam et al., 2023*](https://doi.org/10.1126/science.adi2336)     |
+| **FourCastNetV2**           | ERA5 Reanalysis (0.25°)   | 6 h → 10 days        |   [*Pathak et al., 2022*](https://doi.org/10.48550/arXiv.2202.11214)  |
+| **Pangu-Weather**                 | ERA5 Reanalysis (0.25°)   | 1 h → 7 days** | [Bi et al., 2023](https://doi.org/10.48550/arXiv.2211.02556)     |
+
+Where the models produce the varibale in the table below.
+
 | Variable | FourCastNet | GraphCast | FourCastNetV2 | PanguWeather |
 |---------|-------------|-----------|----------------|---------------|
 | tp      | ✓           | ✓         | —              | —             |
