@@ -101,25 +101,6 @@ is a separate `xarray.Dataset` with:
 
 `cfgrib.open_datasets(path)` returns all of them as a **list** — one per group.
 
----
-
-### 🗂️ Summary of Groups of FourCastNet Output
-
-| Group | Variable(s)    | Level Type                | Notes                                                             |
-| ----- | -------------- | ------------------------- | ----------------------------------------------------------------- |
-| 0     | `tcwv`         | entireAtmosphere          | Total column water vapour                                         |
-| 1     | `u10`, `v10`   | heightAboveGround = 10 m  | Surface wind components                                           |
-| 2     | `t2m`          | heightAboveGround = 2 m   | Near-surface temperature                                          |
-| 3     | `u100`, `v100` | heightAboveGround = 100 m | Upper boundary-layer winds                                        |
-| 4     | `z`            | isobaricInhPa             | Geopotential height (1000–50 hPa)                                 |
-| 5     | `t`            | isobaricInhPa             | Temperature on pressure levels                                    |
-| 6     | `u`, `v`       | isobaricInhPa             | Upper-air winds                                                   |
-| 7     | `r`            | isobaricInhPa             | Relative humidity                                                 |
-| 8     | `msl`          | meanSea                   | Mean sea-level pressure                                           |
-| 9     | `sp`           | surface                   | Surface pressure                                                  |
-| 10    | `tp`           | surface                   | **Total precipitation** (most relevant for extreme-rain analysis) |
-
-👉 **Group 10** contains the variable `tp(step, latitude, longitude)` used for precipitation evaluation.
 
 ---
 
