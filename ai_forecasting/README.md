@@ -50,10 +50,27 @@ Ultimately, the project aims to:
 
 ### 📊 AI Models Under Evaluation
 
-| Model           | Input Data      | Forecast Range | Variables — Single Level                                                                                                                                                                                     | Variables — Pressure Level                                        | Reference                                                          |
-| --------------- | --------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------ |
-| **FourCastNet** | ERA5 Reanalysis | 6 h → 10 days  | `10u` (10-m u-wind), `10v` (10-m v-wind), `2t` (2-m temperature), `sp` (surface pressure), `msl` (mean sea-level pressure), `tcwv` (total column water vapour), `100u` (100-m u-wind), `100v` (100-m v-wind) | `t`, `u`, `v`, `z`, `r` at levels **1000, 850, 500, 250, 50 hPa** | [*Pathak et al., 2022*](https://doi.org/10.48550/arXiv.2202.11214) |
-| **GraphCast**   | ERA5 Reanalysis | 6 h → 10 days  | `10u`, `10v`, `2t`, `sp`, `msl`, `tcwv`, `100u`, `100v`                                                                                                                                                      | `t`, `u`, `v`, `z`, `r` at levels **1000, 850, 500, 250, 50 hPa** | [*Lam et al., 2023*](https://doi.org/10.1126/science.adi2336)      |
+| Variable | FourCastNet | GraphCast | FourCastNetV2 | PanguWeather |
+|---------|-------------|-----------|----------------|---------------|
+| tp      | ✓           | ✓         | —              | —             |
+| t2m     | —           | ✓         | ✓              | ✓             |
+| u10     | ✓           | ✓         | ✓              | ✓             |
+| v10     | ✓           | ✓         | ✓              | ✓             |
+| u100    | —           | —         | ✓              | —             |
+| v100    | —           | —         | ✓              | —             |
+| sp      | ✓           | —         | ✓              | —             |
+| msl     | ✓           | ✓         | ✓              | ✓             |
+| tcwv    | —           | —         | ✓              | —             |
+| z (PL)  | ✓           | ✓         | ✓              | ✓             |
+| t (PL)  | ✓           | ✓         | ✓              | ✓             |
+| u (PL)  | ✓           | ✓         | ✓              | ✓             |
+| v (PL)  | ✓           | ✓         | ✓              | ✓             |
+| q       | —           | ✓         | —              | ✓             |
+| w       | —           | ✓         | —              | —             |
+| r       | ✓           | —         | ✓              | —             |
+| lsm     | —           | ✓         | —              | —             |
+| z (surf)| —           | ✓         | —              | —             |
+
 
 > **Grid/Area used in this work:** 0.25° × 0.25°, global (N: 90°, W: 0°, S: −90°, E: 359.75°); product type: *reanalysis*.
 
