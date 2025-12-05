@@ -34,7 +34,7 @@ All thresholds are computed over a **30-year reference climatology (e.g., 1970â€
 | **Extreme Precipitation** | The accumulated liquid and frozen water, comprising rain and snow, that falls to the Earth's surface | >95th percentile of total precipitation (`tp`)    | `tp`, `cape`, `tcwv` | 
 
 ðŸ‘‰ [**tp parameter detail**](https://codes.ecmwf.int/grib/param-db/228)  
-`Note: ERA5 reanalysis, accumulation variables represent the amount accumulated over the last hour, ending at the timestamp selected`
+ - Note: ERA5 reanalysis, accumulation variables represent the amount accumulated over the last hour, ending at the timestamp selected
 ---
 
 ## ERA5 Threshold over Greece for total precipitation
