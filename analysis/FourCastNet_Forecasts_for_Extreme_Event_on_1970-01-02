@@ -1,0 +1,328 @@
+Below is a **clean, professional, publication-style report template** structured exactly for the analysis you are performing.
+
+I will show you:
+
+1. the **template structure**,
+2. **what text goes in each section**,
+3. **where to insert each of your plots**
+   (D1, D2, D4, D6, D10, D12, D15),
+4. **what figures to include**,
+5. and **how to later fill in the metrics**.
+
+---
+
+# ✅ **EXTREME PRECIPITATION FORECAST EVALUATION REPORT TEMPLATE**
+
+### *Case Study: FourCastNet forecast for 1970-01-02 00:00 UTC*
+
+---
+
+# **1. Introduction**
+
+Extreme precipitation events pose significant risks for society, especially in regions such as Greece where complex topography and localized convective systems strongly influence rainfall distribution.
+In this analysis we evaluate **FourCastNet** forecasts for a selected extreme precipitation case:
+
+* **Target Date (ERA5 verification):** **1970-01-02 00:00 UTC**
+* **Model:** FourCastNet (AI global forecasting system)
+* **Regions analyzed:** Greece (lon 19–29°E, lat 34–42°N)
+* **Forecast ranges:** D1, D2, D4, D6, D10, D12, D15 (24h → 360h)
+
+The goal is to understand:
+
+1. How the spatial distribution of precipitation evolves at different forecast lead times.
+2. How model biases increase with lead time.
+3. Whether the extreme precipitation signal is captured or missed in longer-range forecasts.
+4. How errors behave spatially compared to ERA5.
+
+---
+
+# **2. Data & Methods**
+
+### **2.1 Model Outputs**
+
+We use pre-computed FourCastNet `.grib` forecasts.
+Each file contains accumulated total precipitation (`tp`, units **m**) at different forecast lead times.
+
+### **2.2 Reference Data**
+
+ERA5 `tp` for the same verification time and same region.
+
+### **2.3 Alignment**
+
+Before comparison:
+
+* Extract **D1 step**, **D2 step**, etc.
+* Align valid_time with ERA5
+* Compute metrics per event:
+
+  * Mean precipitation
+  * Bias
+  * RMSE
+  * Spatial correlation
+  * Extreme precipitation detection:
+
+    * Hits
+    * Misses
+    * False alarms
+    * CSI, POD, FAR
+
+### **2.4 Visualization**
+
+For each lead time we show:
+
+1. **ERA5 precipitation**
+2. **Model precipitation**
+3. **Model – ERA5 difference**
+
+Each panel includes:
+
+* **Date & time of verification**
+* **Model lead time (e.g., D4 → 96h)**
+* Borders & coastlines for location clarity
+
+---
+
+# **3. Case Study Overview (ERA5)**
+
+### **3.1 Synoptic description**
+
+This extreme precipitation occurred on **1970-01-02 00:00 UTC**.
+
+**Insert the ERA5-only map below:**
+
+📌 **Figure 1 — ERA5 Total Precipitation (Verification)**
+➡️ *Place your ERA5-only map here (the left panel of any figure).*
+
+---
+
+# **4. Forecast Evaluation**
+
+For each lead time, we include:
+
+* A description of whether the extreme is detected
+* A 3-panel plot (ERA5, model, diff)
+* A summary of numerical metrics
+
+---
+
+## **4.1 Lead Time: D1 (24 hours)**
+
+### Expected behaviour:
+
+Short-term forecasts should match spatial rainfall patterns reasonably well.
+
+### Interpretation Notes (fill after looking at metrics):
+
+* The forecast captures the extreme? Yes/No
+* Is spatial structure similar?
+* Bias magnitude?
+* Extreme detection metrics (hits/misses)?
+
+### 📌 **Insert Figure: D1 (24h)**
+
+**Figure 2 — FourCastNet D1 (24h) forecast vs ERA5**
+![tp_case_fourcastnet_19700102_0000_D1](./plots/tp_case_fourcastnet_19700102_0000_D1.png)
+
+| Metric               | Value    |
+|--------              |--------  |
+| Hits                 | 227      |
+| Misses               | 6        |
+| False Alarms         | 364      |
+| Bias (m)             | 0.00490  |
+| Intensity Change (%) | 1327.72% |
+| Peak intensity ratio (fcst/ERA5) | 15.72 |
+| Peak geo shift (km) | 408.5 |
+| CoM geo shift (km) | 32.2 |
+---
+
+## **4.2 Lead Time: D2 (48 hours)**
+
+### Interpretation Notes:
+
+* Does the extreme shift geographically?
+* Does intensity drop or increase?
+* Are systematic biases emerging?
+
+### 📌 **Insert Figure: D2 (48h)**
+
+**Figure 3 — FourCastNet D2 (48h) forecast vs ERA5**
+![tp_case_fourcastnet_19700102_0000_D2](./plots/tp_case_fourcastnet_19700102_0000_D2.png)
+#### **Lead D2**
+| Metric               | Value |
+|--------              |--------|
+| Hits                 | 233 |
+| Misses               | 0 |
+| False Alarms         | 627 |
+| Bias (m)             | 0.00721 |
+| Intensity Change (%) | 1953.65% |
+| Peak intensity ratio (fcst/ERA5) | 21.41 |
+| Peak geo shift (km) | 408.5 |
+| CoM geo shift (km) | 24.9 |
+
+---
+
+## **4.3 Lead Time: D4 (96 hours)**
+
+### Interpretation Notes:
+
+* Larger displacement errors typically appear
+* Intensity expected to degrade
+
+### 📌 **Insert Figure: D4 (96h)**
+
+**Figure 4 — FourCastNet D4 (96h) forecast vs ERA5**
+![tp_case_fourcastnet_19700102_0000_D4](./plots/tp_case_fourcastnet_19700102_0000_D4.png)
+#### **Lead D4**
+| Metric               | Value |
+|--------              |--------|
+| Hits                 | 233 |
+| Misses               | 0 |
+| False Alarms         | 988 |
+| Bias (m)             | 0.01423 |
+| Intensity Change (%) | 3852.97% |
+| Peak intensity ratio (fcst/ERA5) | 30.75 |
+| Peak geo shift (km) | 418.8 |
+| CoM geo shift (km) | 167.4 |
+---
+
+## **4.4 Lead Time: D6 (144 hours)**
+
+### Interpretation Notes:
+
+* Extreme usually starts to fade
+* Spatial biases become clear
+
+### 📌 **Insert Figure: D6 (144h)**
+
+**Figure 5 — FourCastNet D6 (144h) forecast vs ERA5**
+![tp_case_fourcastnet_19700102_0000_D6](./plots/tp_case_fourcastnet_19700102_0000_D6.png)
+#### **Lead D6**
+| Metric               | Value |
+|--------              |--------|
+| Hits                 | 233 |
+| Misses               | 0 |
+| False Alarms         | 988 |
+| Bias (m)             | 0.02346 |
+| Intensity Change (%) | 6354.08% |
+| Peak intensity ratio (fcst/ERA5) | 37.08 |
+| Peak geo shift (km) | 204.8 |
+| CoM geo shift (km) | 69.0 |
+---
+
+## **4.5 Lead Time: D10 (240 hours)**
+
+### Interpretation Notes:
+
+* Long-range forecasts rarely capture exact location
+* Magnitude divergence expected
+
+### 📌 **Insert Figure: D10 (240h)**
+
+**Figure 6 — FourCastNet D10 (240h) forecast vs ERA5**
+![tp_case_fourcastnet_19700102_0000_D10](./plots/tp_case_fourcastnet_19700102_0000_D10.png)
+#### **Lead D10**
+| Metric               | Value |
+|--------              |--------|
+| Hits                 | 233 |
+| Misses               | 0 |
+| False Alarms         | 988 |
+| Bias (m)             | 0.05665 |
+| Intensity Change (%) | 15341.83% |
+| Peak intensity ratio (fcst/ERA5) | 37.49 |
+| Peak geo shift (km) | 602.6 |
+| CoM geo shift (km) | 234.1 |
+---
+
+## **4.6 Lead Time: D12 (288 hours)**
+
+### 📌 **Insert Figure**
+
+![tp_case_fourcastnet_19700102_0000_D12](./plots/tp_case_fourcastnet_19700102_0000_D12.png)
+#### **Lead D12**
+| Metric               | Value |
+|--------              |--------|
+| Hits                 | 233 |
+| Misses               | 0 |
+| False Alarms         | 988 |
+| Bias (m)             | 0.07160 |
+| Intensity Change (%) | 19389.02% |
+| Peak intensity ratio (fcst/ERA5) | 43.84 |
+| Peak geo shift (km) | 602.6 |
+| CoM geo shift (km) | 253.0 |
+---
+
+## **4.7 Lead Time: D15 (360 hours)**
+
+### 📌 **Insert Figure**
+
+![tp_case_fourcastnet_19700102_0000_D15](./plots/tp_case_fourcastnet_19700102_0000_D15.png)
+
+#### **Lead D15**
+| Metric               | Value |
+|--------              |--------|
+| Hits                 | 233 |
+| Misses               | 0 |
+| False Alarms         | 988 |
+| Bias (m)             | 0.08931 |
+| Intensity Change (%) | 24184.86% |
+| Peak intensity ratio (fcst/ERA5) | 62.51 |
+| Peak geo shift (km) | 602.6 |
+| CoM geo shift (km) | 294.4 |
+---
+
+# **5. Performance Metrics Summary**
+
+Create a table summarizing results.
+
+### **5.1 Key Skill Metrics (per lead time)**
+
+(You will fill these later)
+
+
+| Lead  | Corr      | RMSE   | Bias   | CSI   | POD   | FAR   |
+| ----  | ----      | ----   | ----   | ---   | ---   | ---   |
+| D1    | 0.743     | 0.0120 | 0.0049 | 0.380 | 0.974 | 0.616 |
+| D2    | 0.747     | 0.0165 | 0.0072 | 0.271 | 1.000 | 0.729 |
+| D4    | 0.574     | 0.0210 | 0.0142 | 0.191 | 1.000 | 0.809 |
+| D6    | 0.706     | 0.0395 | 0.0235 | 0.191 | 1.000 | 0.809 |
+| D10   | 0.299     | 0.0636 | 0.0567 | 0.191 | 1.000 | 0.809 |
+| D12   | 0.371     | 0.0778 | 0.0716 | 0.191 | 1.000 | 0.809 |
+| D15   | -0.099    | 0.0972 | 0.0893 | 0.191 | 1.000 | 0.809 |
+
+---
+
+# **6. Discussion**
+
+### Suggested text topics:
+
+* What aspects of the extreme event were captured well?
+* Does the location error increase with lead time?
+* Are biases systematic (e.g., always positive/negative)?
+* Does FourCastNet underestimate/overestimate extremes?
+* How does spatial correlation degrade across lead times?
+* What implications for operational usage?
+* Are some forecast ranges consistently unreliable?
+
+---
+
+# **7. Conclusions**
+
+Summarize:
+
+* How early lead times perform (D1–D2)
+* When forecast breakdown happens (likely after D6 or D10)
+* Whether extremes are predictable
+* Recommendations for future work:
+
+  * Multi-model comparison
+  * Threshold-based extreme prediction
+  * Region-specific calibration
+
+---
+
+# **8. Appendix**
+
+* Include code, file paths, environment information
+* Include threshold map, timelines, and any additional plots
+
+
