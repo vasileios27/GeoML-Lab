@@ -54,7 +54,7 @@ Ultimately, the project aims to:
 | --------------------------------- | ------------------------- | ---------------------------- | -------------- |
 | **FoureCastNet**                  |  ERA5 Reanalysis          | 6 h → 10 days  | [*Pathak et al., 2022*](https://doi.org/10.48550/arXiv.2202.11214) |
 | **GraphCast**                     |  ERA5 Reanalysis          | 6 h → 10 days  | [*Lam et al., 2023*](https://doi.org/10.1126/science.adi2336)     |
-| **FourCastNetV2**           | ERA5 Reanalysis (0.25°)   | 6 h → 10 days        |   [*Pathak et al., 2022*](https://doi.org/10.48550/arXiv.2202.11214)  |
+| **FourCastNetV2**                 | ERA5 Reanalysis (0.25°)   | 6 h → 10 days        |   [*Pathak et al., 2022*](https://doi.org/10.48550/arXiv.2202.11214)  |
 | **Pangu-Weather**                 | ERA5 Reanalysis (0.25°)   | 1 h → 7 days** | [Bi et al., 2023](https://doi.org/10.48550/arXiv.2211.02556)     |
 
 Where the models produce the varibale in the table below.
@@ -82,6 +82,8 @@ Where the models produce the varibale in the table below.
 
 
 > **Grid/Area used in this work:** 0.25° × 0.25°, global (N: 90°, W: 0°, S: −90°, E: 359.75°); product type: *reanalysis*.
+> Note: ERA5 reanalysis, accumulation variables represent the amount accumulated over the last hour, ending at the timestamp selected
+> Note: FoureCastNet and GraphCast accumulation variables predicts the 6-hourly accumulated total precipitation (rather than the 1 hourprecipitation in the raw ERA5 data).
 
 ---
 
