@@ -81,9 +81,9 @@ Where the models produce the varibale in the table below.
 | z (surf)| —           | ✓         | —              | —             |
 
 
-> **Grid/Area used in this work:** 0.25° × 0.25°, global (N: 90°, W: 0°, S: −90°, E: 359.75°); product type: *reanalysis*. 
+> **Grid/Area used in this work:** 0.25° × 0.25°, global (N: 90°, W: 0°, S: −90°, E: 359.75°); product type: *reanalysis*.  
 > Note: ERA5 reanalysis, accumulation variables represent the amount accumulated over the last hour, ending at the timestamp selected
-> Note: FoureCastNet and GraphCast accumulation variables predicts the 6-hourly accumulated total precipitation (rather than the 1 hourprecipitation in the raw ERA5 data).
+> where FoureCastNet and GraphCast accumulation variables predicts the 6-hourly accumulated total precipitation (rather than the 1 hourprecipitation in the raw ERA5 data).
 
 ---
 
