@@ -3,3 +3,15 @@ era5_data_pipeline/GR_single.nc
 *.nc
 extremes/test.csv
 extremes/*.csv
+GeoML_graphcast/
+GeoML_GeoML_graphcast/
+GeoML_fourcastnet/
+analysis/envAnalysis/*
+analysis/*.py
+analysis/*.csv
+test_grib_files.py
+cache-2.db
+data/
+merge_grib.py
+GeoML_panguweather/
+project_graphcast.tar.gz
