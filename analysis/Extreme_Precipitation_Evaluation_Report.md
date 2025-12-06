@@ -52,7 +52,8 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 ## 3. ERA5 Ground Truth
 
 ### ERA5 6-hour accumulated precipitation.
-![Total accumolated precipitation forecast for 2023-12-21 00:00 ](./plots/era5_tp_6h_accum_20231221_0000.png)
+<img src="./plots/era5_tp_6h_accum_20231221_0000.png" width="700px"> 
+
 ### ERA5 1-hour accumulated precipitation.
 ![Total hourly precipitation forecast for 2023-12-21 00:00 ](./plots/era5_tp_6h_hourly_20231221_0000.png)
 ---
