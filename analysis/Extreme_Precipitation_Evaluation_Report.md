@@ -30,10 +30,6 @@ to predict an extreme precipitation event affecting Greece.
 | D10      | 240h  |
 
 ERA5 6-hour accumulated precipitation is used as the ground truth.
-![Total accumolated precipitation forecast for 2023-12-21 00:00 ](./plots/era5_tp_6h_accum_20231221_0000.png)
-![Total hourly precipitation forecast for 2023-12-21 00:00 ](./plots/era5_tp_6h_hourly_20231221_0000.png)
----
-
 ## 2. Methods Summary
 
 * Models produce accumulated precipitation fields (`tp`)
@@ -55,8 +51,12 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 ## 3. ERA5 Ground Truth
 
-**Figure 1. ERA5 6-hour accumulated precipitation**
-`./plots/era5_tp_19700102_0000.png` *(insert the final ERA5 plot)*
+### ERA5 6-hour accumulated precipitation.
+![Total accumolated precipitation forecast for 2023-12-21 00:00 ](./plots/era5_tp_6h_accum_20231221_0000.png)
+### ERA5 1-hour accumulated precipitation.
+![Total hourly precipitation forecast for 2023-12-21 00:00 ](./plots/era5_tp_6h_hourly_20231221_0000.png)
+---
+
 
 ---
 
@@ -68,12 +68,10 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 ![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_20231221_0000_D1.png)
 **Figure GraphCast D1 (24h) forecast vs ERA5**
 ![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_20231221_0000_D1.png)
+
 ### **Metrics — D1**
 
-
-# Select D1 (lead_days == 1)
-
-=== 🔍 FOURCASTNET vs GRAPHCAST — D1 Metrics ===
+=== FOURCASTNET vs GRAPHCAST — D1 Metrics ===
 
 | Metric               | FourCastNet          | GraphCast            |
 |----------------------|----------------------|----------------------|
@@ -102,7 +100,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 ### **Metrics — D2**
 
-=== 🔍 FOURCASTNET vs GRAPHCAST — D2 Metrics ===
+=== FOURCASTNET vs GRAPHCAST — D2 Metrics ===
 
 | Metric               | FourCastNet          | GraphCast            |
 |----------------------|----------------------|--------------------- |
@@ -131,7 +129,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 ### **Metrics — D4**
 
-=== 🔍 FOURCASTNET vs GRAPHCAST — D4 Metrics ===
+=== FOURCASTNET vs GRAPHCAST — D4 Metrics ===
 
 | Metric               | FourCastNet         | GraphCast          |
 |----------------------|----------------------|---------------------|
@@ -186,7 +184,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 ![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_20231221_0000_D10.png)
 
 ### **Metrics — D10**
-=== 🔍 FOURCASTNET vs GRAPHCAST — D1 Metrics ===
+=== FOURCASTNET vs GRAPHCAST — D1 Metrics ===
 
 | Metric               | FourCastNet          | GraphCast            |
 |----------------------|----------------------|----------------------|
@@ -229,12 +227,6 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 # 7. Summary & Conclusions
 
-(Write your own science interpretation here, e.g.):
-
-* FC detects extremes well at all leads (POD=1.0), but generates **large false alarms** at longer leads.
-* FC shows **large positive bias** and **strong overestimation** of precipitation intensity.
-* Spatial displacement grows significantly after D6.
-* GC comparison to follow.
 
 ---
 
