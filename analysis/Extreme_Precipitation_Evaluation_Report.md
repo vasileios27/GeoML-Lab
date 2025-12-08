@@ -234,7 +234,6 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 # **8. Verification Metrics Explained**
 
 This section defines all metrics used in this evaluation.
-Let the forecast and ERA5 observation fields be:
 
 * (F_i): forecast precipitation at grid point (i)
 * (O_i): observed (ERA5) precipitation at grid point (i)
@@ -349,8 +348,8 @@ Measures how well the model captures **maximum rainfall intensity**.
 
 Let:
 
-* Forecast peak location → ((\phi_F^{\max}, \lambda_F^{\max}))
-* Observed peak location → ((\phi_O^{\max}, \lambda_O^{\max}))
+* Forecast peak location → $((\phi_F^{\max},\quad \lambda_F^{\max}))$
+* Observed peak location → $((\phi_O^{\max},\quad \lambda_O^{\max}))$
 
 Distance:
 
@@ -385,10 +384,6 @@ d_{\text{cm}} = \text{haversine}(\phi_O^{\text{cm}},\lambda_O^{\text{cm}},\phi_F
 $$
 
 Measures how far the **entire precipitation system** was shifted.
-
----
-
-# 🔚 **End of Metrics Appendix**
 
 ---
 
