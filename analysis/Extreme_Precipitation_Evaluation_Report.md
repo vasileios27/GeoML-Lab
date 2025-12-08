@@ -47,6 +47,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
   * Peak displacement distance (km)
   * Center-of-mass displacement (km)
 
+> *Definitions and formulas for all metrics are provided in **Section 8 (Verification Metrics Explained)**.*
 ---
 
 ## 3. ERA5 Ground Truth
@@ -228,6 +229,171 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 # 7. Summary & Conclusions
 
+
+
+# **8. Verification Metrics Explained**
+
+This section defines all metrics used in this evaluation.
+Let the forecast and ERA5 observation fields be:
+
+* (F_i): forecast precipitation at grid point (i)
+* (O_i): observed (ERA5) precipitation at grid point (i)
+* (T_i): extreme-event threshold (local 95th percentile)
+
+Extreme-event binary fields:
+
+* Forecast extreme: (E^F_i = 1) if (F_i > T_i), else 0
+* Observed extreme: (E^O_i = 1) if (O_i > T_i), else 0
+
+Event counts:
+
+* Hits (H): forecast = 1 and observed = 1
+* Misses (M): forecast = 0 but observed = 1
+* False alarms (F): forecast = 1 but observed = 0
+
+All metrics are computed over the ERA5 Greece evaluation grid.
+
+---
+
+## **8.1 Bias**
+
+[
+\text{Bias} = \frac{1}{N} \sum_{i=1}^N (F_i - O_i)
+]
+
+Bias measures the *average error* of the forecast.
+
+* Positive → overestimation
+* Negative → underestimation
+
+---
+
+## **8.2 RMSE (Root Mean Square Error)**
+
+[
+\text{RMSE} = \sqrt{ \frac{1}{N} \sum_{i=1}^{N} (F_i - O_i)^2 }
+]
+
+Represents the *overall error magnitude*, heavily penalizing large discrepancies.
+Lower RMSE indicates a forecast field closer to the observation.
+
+---
+
+## **8.3 Spatial Correlation**
+
+[
+\text{Corr} =
+\frac{
+\sum (F_i - \overline{F})(O_i - \overline{O})
+}{
+\sqrt{\sum (F_i - \overline{F})^2}
+\sqrt{\sum (O_i - \overline{O})^2}
+}
+]
+
+Measures similarity of the **spatial patterns**.
+
+* 1 → perfect pattern match
+* 0 → unrelated patterns
+* –1 → opposite patterns
+
+---
+
+## **8.4 CSI — Critical Success Index**
+
+[
+\text{CSI} = \frac{H}{H + M + F}
+]
+
+Evaluates how well extreme events were detected.
+Penalizes both misses and false alarms.
+Higher CSI = better detection skill.
+
+---
+
+## **8.5 POD — Probability of Detection**
+
+[
+\text{POD} = \frac{H}{H + M}
+]
+
+Measures how many observed extremes were successfully predicted.
+
+* POD = 1 → all extremes detected
+* Does *not* penalize false alarms
+
+---
+
+## **8.6 FAR — False Alarm Ratio**
+
+[
+\text{FAR} = \frac{F}{H + F}
+]
+
+Fraction of predicted extremes that did *not* occur.
+Lower FAR = more reliable forecasting of extremes.
+
+---
+
+## **8.7 Peak Intensity Ratio**
+
+Let:
+
+* (O_{\max} = \max(O_i))
+* (F_{\max} = \max(F_i))
+
+[
+\text{Peak Ratio} = \frac{F_{\max}}{O_{\max}}
+]
+
+Measures how well the model captures **maximum rainfall intensity**.
+
+---
+
+## **8.8 Peak Displacement Distance (km)**
+
+Let:
+
+* Forecast peak location → ((\phi_F^{\max}, \lambda_F^{\max}))
+* Observed peak location → ((\phi_O^{\max}, \lambda_O^{\max}))
+
+Distance:
+
+[
+d_{\text{peak}} = \text{haversine}(\phi_O^{\max},\lambda_O^{\max},\phi_F^{\max},\lambda_F^{\max})
+]
+
+Captures how far the model misplaced the **center of the maximum rainfall**.
+
+---
+
+## **8.9 Center-of-Mass Displacement (km)**
+
+ERA5 centroid:
+
+[
+\phi_O^{\text{cm}} = \frac{\sum O_i \phi_i}{\sum O_i}, \qquad
+\lambda_O^{\text{cm}} = \frac{\sum O_i \lambda_i}{\sum O_i}
+]
+
+Forecast centroid:
+
+[
+\phi_F^{\text{cm}} = \frac{\sum F_i \phi_i}{\sum F_i}, \qquad
+\lambda_F^{\text{cm}} = \frac{\sum F_i \lambda_i}{\sum F_i}
+]
+
+Distance:
+
+[
+d_{\text{cm}} = \text{haversine}(\phi_O^{\text{cm}},\lambda_O^{\text{cm}},\phi_F^{\text{cm}},\lambda_F^{\text{cm}})
+]
+
+Measures how far the **entire precipitation system** was shifted.
+
+---
+
+# 🔚 **End of Metrics Appendix**
 
 ---
 
