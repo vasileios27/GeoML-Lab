@@ -242,8 +242,8 @@ Let the forecast and ERA5 observation fields be:
 
 Extreme-event binary fields:
 
-* Forecast extreme: (E^F_i = 1) if (F_i > T_i), else 0
-* Observed extreme: (E^O_i = 1) if (O_i > T_i), else 0
+* Forecast extreme: $(E^F_i = 1) \quad \text{if} \quad (F_i > T_i), \quad \text{else} \quad 0$
+* Observed extreme: $(E^O_i = 1) \quad \text{if} \quad (O_i > T_i), \quad \text{else} \quad 0$
 
 Event counts:
 
@@ -257,7 +257,7 @@ All metrics are computed over the ERA5 Greece evaluation grid.
 
 ## **8.1 Bias**
 
-$\text{Bias} = \frac{1}{N} \sum_{i=1}^N (F_i - O_i)$
+$$\text{Bias} = \frac{1}{N} \sum_{i=1}^N (F_i - O_i)$$
 
 Bias measures the *average error* of the forecast.
 
@@ -268,9 +268,8 @@ Bias measures the *average error* of the forecast.
 
 ## **8.2 RMSE (Root Mean Square Error)**
 
-[
-\text{RMSE} = \sqrt{ \frac{1}{N} \sum_{i=1}^{N} (F_i - O_i)^2 }
-]
+
+$$\text{RMSE} = \sqrt{ \frac{1}{N} \sum_{i=1}^{N} (F_i - O_i)^2 }$$
 
 Represents the *overall error magnitude*, heavily penalizing large discrepancies.
 Lower RMSE indicates a forecast field closer to the observation.
@@ -279,7 +278,7 @@ Lower RMSE indicates a forecast field closer to the observation.
 
 ## **8.3 Spatial Correlation**
 
-[
+$$
 \text{Corr} =
 \frac{
 \sum (F_i - \overline{F})(O_i - \overline{O})
@@ -287,7 +286,7 @@ Lower RMSE indicates a forecast field closer to the observation.
 \sqrt{\sum (F_i - \overline{F})^2}
 \sqrt{\sum (O_i - \overline{O})^2}
 }
-]
+$$
 
 Measures similarity of the **spatial patterns**.
 
@@ -299,9 +298,7 @@ Measures similarity of the **spatial patterns**.
 
 ## **8.4 CSI — Critical Success Index**
 
-[
-\text{CSI} = \frac{H}{H + M + F}
-]
+$$\text{CSI} = \frac{H}{H + M + F}$$
 
 Evaluates how well extreme events were detected.
 Penalizes both misses and false alarms.
@@ -311,9 +308,9 @@ Higher CSI = better detection skill.
 
 ## **8.5 POD — Probability of Detection**
 
-[
+$$
 \text{POD} = \frac{H}{H + M}
-]
+$$
 
 Measures how many observed extremes were successfully predicted.
 
@@ -324,9 +321,9 @@ Measures how many observed extremes were successfully predicted.
 
 ## **8.6 FAR — False Alarm Ratio**
 
-[
+$$
 \text{FAR} = \frac{F}{H + F}
-]
+$$
 
 Fraction of predicted extremes that did *not* occur.
 Lower FAR = more reliable forecasting of extremes.
@@ -337,12 +334,12 @@ Lower FAR = more reliable forecasting of extremes.
 
 Let:
 
-* (O_{\max} = \max(O_i))
-* (F_{\max} = \max(F_i))
+* $(O_{\max} = \max(O_i))$ 
+* $(F_{\max} = \max(F_i))$ 
 
-[
+$$
 \text{Peak Ratio} = \frac{F_{\max}}{O_{\max}}
-]
+$$
 
 Measures how well the model captures **maximum rainfall intensity**.
 
@@ -357,9 +354,9 @@ Let:
 
 Distance:
 
-[
+$$
 d_{\text{peak}} = \text{haversine}(\phi_O^{\max},\lambda_O^{\max},\phi_F^{\max},\lambda_F^{\max})
-]
+$$
 
 Captures how far the model misplaced the **center of the maximum rainfall**.
 
@@ -369,23 +366,23 @@ Captures how far the model misplaced the **center of the maximum rainfall**.
 
 ERA5 centroid:
 
-[
+$$
 \phi_O^{\text{cm}} = \frac{\sum O_i \phi_i}{\sum O_i}, \qquad
 \lambda_O^{\text{cm}} = \frac{\sum O_i \lambda_i}{\sum O_i}
-]
+$$
 
 Forecast centroid:
 
-[
+$$
 \phi_F^{\text{cm}} = \frac{\sum F_i \phi_i}{\sum F_i}, \qquad
 \lambda_F^{\text{cm}} = \frac{\sum F_i \lambda_i}{\sum F_i}
-]
+$$
 
 Distance:
 
-[
+$$
 d_{\text{cm}} = \text{haversine}(\phi_O^{\text{cm}},\lambda_O^{\text{cm}},\phi_F^{\text{cm}},\lambda_F^{\text{cm}})
-]
+$$
 
 Measures how far the **entire precipitation system** was shifted.
 
