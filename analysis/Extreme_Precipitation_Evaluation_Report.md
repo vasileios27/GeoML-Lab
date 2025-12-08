@@ -257,9 +257,7 @@ All metrics are computed over the ERA5 Greece evaluation grid.
 
 ## **8.1 Bias**
 
-[
-\text{Bias} = \frac{1}{N} \sum_{i=1}^N (F_i - O_i)
-]
+$\text{Bias} = \frac{1}{N} \sum_{i=1}^N (F_i - O_i)$
 
 Bias measures the *average error* of the forecast.
 
