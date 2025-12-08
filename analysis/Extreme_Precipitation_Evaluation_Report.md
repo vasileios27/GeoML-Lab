@@ -81,7 +81,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 | Misses               | 0                    | 4                    |
 | False Alarms         | 230                  | 147                  |
 | Bias (m)             | 0.00622              | 0.00140              |
-| RMSE (m)             | 0.0090               | 0.0038               |
+| RMSE                 | 0.0090               | 0.0038               |
 | Correlation          | 0.635                | 0.651                |
 | CSI                  | 0.758                | 0.826                |
 | POD                  | 1.000                | 0.994                |
@@ -110,7 +110,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 | Misses               | 0                    | 15                   |
 | False Alarms         | 228                  | 168                  |
 | Bias (m)             | 0.00542              | 0.00165              |
-| RMSE (m)             | 0.0086               | 0.0034               |
+| RMSE                 | 0.0086               | 0.0034               |
 | Correlation          | 0.524                | 0.669                |
 | CSI                  | 0.759                | 0.794                |
 | POD                  | 1.000                | 0.979                |
@@ -139,7 +139,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 | Misses               | 0                    | 20                   |
 | False Alarms         | 269                  | 185                  |
 | Bias (m)             | 0.00369              | 0.00104              |
-| RMSE (m)             | 0.0066               | 0.0035               |
+| RMSE                 | 0.0066               | 0.0035               |
 | Correlation          | 0.431                | 0.582                |
 | CSI                  | 0.728                | 0.773                |
 | POD                  | 1.000                | 0.972                |
@@ -167,7 +167,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 | Misses               | 0                    | 0                    |
 | False Alarms         | 501                  | 499                  |
 | Bias (m)             | 0.02120              | 0.02029              |
-| RMSE (m)             | 0.0267               | 0.0257               |
+| RMSE                 | 0.0267               | 0.0257               |
 | Correlation          | -0.217               | -0.262               |
 | CSI                  | 0.590                | 0.591                |
 | POD                  | 1.000                | 1.000                |
@@ -194,7 +194,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 | Misses               | 0                    | 0                    |
 | False Alarms         | 501                  | 501                  |
 | Bias (m)             | 0.00617              | 0.02074              |
-| RMSE (m)             | 0.0121               | 0.0237               |
+| RMSE                 | 0.0121               | 0.0237               |
 | Correlation          | -0.355               | -0.246               |
 | CSI                  | 0.590                | 0.590                |
 | POD                  | 1.000                | 1.000                |
