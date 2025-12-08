@@ -17,3 +17,5 @@ GeoML_panguweather/
 project_graphcast.tar.gz
 analysis/envAnalysis
 analysis/models_output
+.DS_Store
+analysis/.DS_Store
