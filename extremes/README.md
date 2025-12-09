@@ -6,7 +6,7 @@
 
 ## 🌍 Purpose
 
-This document describes **how GeoML-Lab defines and identifies extreme events** in weather and climate data.
+This document describes **how GeoML-Lab defines extreme events** in weather and climate data.
 These definitions form the foundation for:
 
 * **Labeling events** used in model training and evaluation
@@ -18,14 +18,43 @@ These definitions form the foundation for:
 ## 📈 General Definition
 
 An **extreme event** is defined as an atmospheric or hydrological phenomenon that **significantly deviates from the local climatological distribution**, typically beyond a specified percentile threshold.
-In most analyses, GeoML-Lab adopts:
+In most analyses, GeoML-Lab uses Extreme Value Analysis (EVA):
 
 * **Upper-tail extremes:** 95th percentile (e.g., heavy rain, heatwaves, high wind)
 * **Lower-tail extremes:** 1st–5th percentile (e.g., cold spells, low pressure anomalies)
 
-All thresholds are computed over a **30-year reference climatology (e.g., 1970–2023)** using **ERA5 reanalysis** or compatible datasets.
+All thresholds are computed over a **30-year reference climatology (e.g., 1970–2023)** using **ERA5 reanalysis** data and the python package `pyextremes`.
 
 ---
+
+## Example: Extreme Value Analysis (EVA) with `pyextremes`
+
+In this example, we perform **Extreme Value Analysis (EVA)** on ERA5 total precipitation using the [`pyextremes`](https://georgebv.github.io/pyextremes/) Python package.
+
+`pyextremes` performs Extreme Value Analysis by extracting extreme events from a time series using either Block Maxima (GEV) or Peaks-Over-Threshold (GPD) methods, fitting the appropriate extreme-value distribution using maximum likelihood, and computing statistically meaningful metrics such as return levels and return periods. This provides a rigorous, theoretically grounded way to quantify rare and high-impact climate events like extreme precipitation.
+
+We demonstrate the analysis for a single grid point:
+
+1. Extract a **single grid-point time series**
+2. Fit a **GEV model** using **Block Maxima (BM)** with annual maxima
+3. Compute **10, 20, and 50-year return levels**
+4. Generate **diagnostic plots** and a **return value plot**
+
+#### 4.2 Diagnostic plots (PDF, Q–Q, P–P)
+
+![EVA diagnostic plots](./../plots/EVA_plots1.png)
+
+* **Probability density plot**: fitted vs empirical distribution
+* **Q–Q plot**: theoretical vs observed quantiles
+* **P–P plot**: theoretical vs observed probabilities
+
+Also, a frequency plot for the values in the specific grid point can be found below.  
+![EVA diagnostic plots](./../plots/EVA_plot2.png)
+
+The code of the full analysis, can be found in the script [threshold_EVA.py](./threshold_EVA.py)
+---
+
+
 
 ## 🌧️ Categories of Extreme Events
 
