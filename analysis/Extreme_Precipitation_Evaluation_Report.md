@@ -66,15 +66,15 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 All the data below, are the averages 
 ## 🔵 **4.1 Lead Time D1 (24h)**
-
+Example plot for one event
 **Figure FourCastNet D1 (24h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_20231221_0000_D1.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_19731027_1800_D1.png)
 **Figure GraphCast D1 (24h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_20231221_0000_D1.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_1973102718_19731027_1800_D1.png)
 
 ### **Metrics — D1**
 
-=== FOURCASTNET vs GRAPHCAST — D1 Metrics ===
+=== FOURCASTNET vs GRAPHCAST — D1 Metrics Average values ===
 
 
 | Metric          | FourCastNet   | GraphCast   |
@@ -96,9 +96,9 @@ All the data below, are the averages
 ## 🔵 **4.2 Lead Time D2 (48h)**
 
 **Figure FourCastNet D2 (48h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_20231221_0000_D2.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_19731027_1800_D2.png)
 **Figure GraphCast D2 (48h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_20231221_0000_D2.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_1973102718_19731027_1800_D2.png)
 
 ### **Metrics — D2**
 
@@ -122,9 +122,9 @@ All the data below, are the averages
 ## 🔵 **4.3 Lead Time D4 (96h)**
 
 **Figure FourCastNet D4 (96h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_20231221_0000_D4.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_19731027_1800_D4.png)
 **Figure GraphCast D4 (96h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_20231221_0000_D4.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_1973102718_19731027_1800_D4.png)
 
 ### **Metrics — D4**
 
@@ -149,9 +149,9 @@ All the data below, are the averages
 ## 🔵 **4.4 Lead Time D6 (144h)**
 
 **Figure FourCastNet D6 (144h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_20231221_0000_D6.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_19731027_1800_D6.png)
 **Figure GraphCast D6 (144h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_20231221_0000_D6.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_1973102718_19731027_1800_D6.png)
 
 ### **Metrics — D6**
 === 🔍 FOURCASTNET vs GRAPHCAST — D6 Metrics ===
@@ -174,9 +174,9 @@ All the data below, are the averages
 ## 🔵 **4.5 Lead Time D10 (240h)**
 
 **Figure FourCastNet D10 (240h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_20231221_0000_D10.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_19731027_1800_D10.png)
 **Figure GraphCast D10 (240h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_20231221_0000_D10.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_1973102718_19731027_1800_D10.png)
 
 ### **Metrics — D10**
 === FOURCASTNET vs GRAPHCAST — D10 Metrics ===
