@@ -64,6 +64,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 # 4. FourCastNet Forecast Evaluation (Filled Metrics)
 
+All the data below, are the averages 
 ## 🔵 **4.1 Lead Time D1 (24h)**
 
 **Figure FourCastNet D1 (24h) forecast vs ERA5**
@@ -75,21 +76,20 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 === FOURCASTNET vs GRAPHCAST — D1 Metrics ===
 
-| Metric               | FourCastNet          | GraphCast            |
-|----------------------|----------------------|----------------------|
-| Hits                 | 720                  | 716                  |
-| Misses               | 0                    | 4                    |
-| False Alarms         | 230                  | 147                  |
-| Bias (m)             | 0.00622              | 0.00140              |
-| RMSE                 | 0.0090               | 0.0038               |
-| Correlation          | 0.635                | 0.651                |
-| CSI                  | 0.758                | 0.826                |
-| POD                  | 1.000                | 0.994                |
-| FAR                  | 0.242                | 0.170                |
-| Peak Ratio           | 2.14                 | 0.98                 |
-| Intensity Change (%) | 214.19%              | 98.18%               |
-| Peak Shift (km)      | 316.8 km             | 526.6 km             |
-| CoM Shift (km)       | 59.6 km              | 100.7 km             |
+
+| Metric          | FourCastNet   | GraphCast   |
+|:----------------|:--------------|:------------|
+| Hits            | 8             | 8           |
+| Misses          | 7             | 7           |
+| False Alarms    | 78            | 61          |
+| Bias (m)        | 0.00636       | 0.00569     |
+| RMSE            | 0.0127        | 0.0117      |
+| Correlation     | 0.673         | 0.638       |
+| CSI             | 0.109         | 0.114       |
+| POD             | 0.536         | 0.509       |
+| FAR             | 0.858         | 0.845       |
+| Peak Ratio      | 1.30          | 1.03        |
+| Peak Shift (km) | 178.0 km      | 168.1 km    |
 
 ---
 
@@ -103,22 +103,19 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 ### **Metrics — D2**
 
 === FOURCASTNET vs GRAPHCAST — D2 Metrics ===
-
-| Metric               | FourCastNet          | GraphCast            |
-|----------------------|----------------------|--------------------- |
-| Hits                 | 720                  | 705                  |
-| Misses               | 0                    | 15                   |
-| False Alarms         | 228                  | 168                  |
-| Bias (m)             | 0.00542              | 0.00165              |
-| RMSE                 | 0.0086               | 0.0034               |
-| Correlation          | 0.524                | 0.669                |
-| CSI                  | 0.759                | 0.794                |
-| POD                  | 1.000                | 0.979                |
-| FAR                  | 0.241                | 0.192                |
-| Peak Ratio           | 1.98                 | 0.91                 |
-| Intensity Change (%) | 198.39%              | 90.95%               |
-| Peak Shift (km)      | 524.6 km             | 393.9 km             |
-| CoM Shift (km)       | 87.4 km              | 18.1 km              |
+| Metric          | FourCastNet   | GraphCast   |
+|:----------------|:--------------|:------------|
+| Hits            | 9             | 9           |
+| Misses          | 7             | 6           |
+| False Alarms    | 119           | 100         |
+| Bias (m)        | 0.00899       | 0.00812     |
+| RMSE            | 0.0174        | 0.0162      |
+| Correlation     | 0.522         | 0.528       |
+| CSI             | 0.084         | 0.096       |
+| POD             | 0.545         | 0.583       |
+| FAR             | 0.876         | 0.882       |
+| Peak Ratio      | 1.66          | 1.41        |
+| Peak Shift (km) | 258.0 km      | 271.4 km    |
 
 ---
 
@@ -133,21 +130,19 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 === FOURCASTNET vs GRAPHCAST — D4 Metrics ===
 
-| Metric               | FourCastNet         | GraphCast          |
-|----------------------|----------------------|---------------------|
-| Hits                 | 720                  | 700                  |
-| Misses               | 0                    | 20                   |
-| False Alarms         | 269                  | 185                  |
-| Bias (m)             | 0.00369              | 0.00104              |
-| RMSE                 | 0.0066               | 0.0035               |
-| Correlation          | 0.431                | 0.582                |
-| CSI                  | 0.728                | 0.773                |
-| POD                  | 1.000                | 0.972                |
-| FAR                  | 0.272                | 0.209                |
-| Peak Ratio           | 1.58                 | 0.94                 |
-| Intensity Change (%) | 158.11%              | 93.54%               |
-| Peak Shift (km)      | 543.7 km             | 546.5 km             |
-| CoM Shift (km)       | 111.3 km             | 88.6 km              |
+| Metric          | FourCastNet   | GraphCast   |
+|:----------------|:--------------|:------------|
+| Hits            | 8             | 8           |
+| Misses          | 8             | 8           |
+| False Alarms    | 158           | 151         |
+| Bias (m)        | 0.01325       | 0.01338     |
+| RMSE            | 0.0234        | 0.0225      |
+| Correlation     | 0.400         | 0.389       |
+| CSI             | 0.061         | 0.052       |
+| POD             | 0.483         | 0.451       |
+| FAR             | 0.930         | 0.926       |
+| Peak Ratio      | 2.07          | 1.67        |
+| Peak Shift (km) | 322.2 km      | 317.9 km    |
 
 ---
 
@@ -161,21 +156,19 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 ### **Metrics — D6**
 === 🔍 FOURCASTNET vs GRAPHCAST — D6 Metrics ===
 
-| Metric               | FourCastNet         | GraphCast          |
-|----------------------|----------------------|---------------------|
-| Hits                 | 720                  | 720                  |
-| Misses               | 0                    | 0                    |
-| False Alarms         | 501                  | 499                  |
-| Bias (m)             | 0.02120              | 0.02029              |
-| RMSE                 | 0.0267               | 0.0257               |
-| Correlation          | -0.217               | -0.262               |
-| CSI                  | 0.590                | 0.591                |
-| POD                  | 1.000                | 1.000                |
-| FAR                  | 0.410                | 0.409                |
-| Peak Ratio           | 4.75                 | 3.81                 |
-| Intensity Change (%) | 475.23%              | 380.94%              |
-| Peak Shift (km)      | 590.4 km             | 594.1 km             |
-| CoM Shift (km)       | 301.1 km             | 305.8 km             |
+| Metric          | FourCastNet   | GraphCast   |
+|:----------------|:--------------|:------------|
+| Hits            | 6             | 6           |
+| Misses          | 10            | 9           |
+| False Alarms    | 219           | 207         |
+| Bias (m)        | 0.01715       | 0.01681     |
+| RMSE            | 0.0276        | 0.0269      |
+| Correlation     | 0.207         | 0.232       |
+| CSI             | 0.033         | 0.025       |
+| POD             | 0.354         | 0.366       |
+| FAR             | 0.952         | 0.969       |
+| Peak Ratio      | 1.94          | 1.78        |
+| Peak Shift (km) | 432.0 km      | 368.4 km    |
 ---
 
 ## 🔵 **4.5 Lead Time D10 (240h)**
@@ -186,37 +179,25 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 ![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_20231221_0000_D10.png)
 
 ### **Metrics — D10**
-=== FOURCASTNET vs GRAPHCAST — D1 Metrics ===
+=== FOURCASTNET vs GRAPHCAST — D10 Metrics ===
 
-| Metric               | FourCastNet          | GraphCast            |
-|----------------------|----------------------|----------------------|
-| Hits                 | 720                  | 720                  |
-| Misses               | 0                    | 0                    |
-| False Alarms         | 501                  | 501                  |
-| Bias (m)             | 0.00617              | 0.02074              |
-| RMSE                 | 0.0121               | 0.0237               |
-| Correlation          | -0.355               | -0.246               |
-| CSI                  | 0.590                | 0.590                |
-| POD                  | 1.000                | 1.000                |
-| FAR                  | 0.410                | 0.410                |
-| Peak Ratio           | 3.25                 | 3.06                 |
-| Intensity Change (%) | 324.87%              | 305.90%              |
-| Peak Shift (km)      | 871.6 km             | 566.8 km             |
-| CoM Shift (km)       | 333.2 km             | 253.1 km             |
+| Metric          | FourCastNet   | GraphCast   |
+|:----------------|:--------------|:------------|
+| Hits            | 4             | 5           |
+| Misses          | 12            | 11          |
+| False Alarms    | 324           | 315         |
+| Bias (m)        | 0.02531       | 0.02372     |
+| RMSE            | 0.0389        | 0.0353      |
+| Correlation     | -0.034        | 0.040       |
+| CSI             | 0.008         | 0.011       |
+| POD             | 0.191         | 0.273       |
+| FAR             | 0.991         | 0.989       |
+| Peak Ratio      | 2.77          | 2.31        |
+| Peak Shift (km) | 543.7 km      | 482.0 km    |
 ---
 
 
-# 6. GraphCast vs FourCastNet — Lead-by-Lead Comparison
 
-===  GraphCast vs FourCastNet — Pairwise Metrics (GC_vs_FC) ===
-
-| Lead | mean_GC (m) | mean_FC (m) | Bias (GC−FC) (m) | RMSE(GC,FC) (m) | Corr(GC,FC) |
-|------|-------------|-------------|------------------|-----------------|------------|
-| D1   | 0.003667    | 0.008483    | -0.004816        | 0.006885        | 0.822      |
-| D2   | 0.003914    | 0.007685    | -0.003772        | 0.007002        | 0.658      |
-| D4   | 0.003309    | 0.005959    | -0.002650        | 0.005667        | 0.573      |
-| D6   | 0.022562    | 0.023471    | -0.000908        | 0.009314        | 0.810      |
-| D10  | 0.023005    | 0.008438    | 0.014568         | 0.017845        | 0.431      |
 
 
 **Figure FourCastNet D10 (240h) forecast vs ERA5**
