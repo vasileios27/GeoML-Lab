@@ -64,13 +64,15 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 # 4. FourCastNet Forecast Evaluation (Filled Metrics)
 
-All the data below, are the averages 
+All the data in the tables below, are the averages, and the average extreme pixels are 15.46, example prediction plost will be showm for visualisation perpuses 
 ## 🔵 **4.1 Lead Time D1 (24h)**
-Example plot for one event, where the average extreme pixels are 15.46
-**Figure FourCastNet D1 (24h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_19731027_1800_D1.png)
+
+**Figure GraphCast vs FourCastNet D1 (24h) forecast vs ERA5**
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_vs_fourcast_19731027_1800_D1.png)
 **Figure GraphCast D1 (24h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_1973102718_19731027_1800_D1.png)
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_19731027_1800_D1.png)
+**Figure FourCastNet D1 (24h) forecast vs ERA5**
+![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcastnet_19731027_1800_D1.png )
 
 ### **Metrics — D1**
 
