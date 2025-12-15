@@ -66,7 +66,7 @@ ERA5 6-hour accumulated precipitation is used as the ground truth.
 
 All the data below, are the averages 
 ## 🔵 **4.1 Lead Time D1 (24h)**
-Example plot for one event
+Example plot for one event, where the average extreme pixels are 15.46
 **Figure FourCastNet D1 (24h) forecast vs ERA5**
 ![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_fourcast_19731027_1800_D1.png)
 **Figure GraphCast D1 (24h) forecast vs ERA5**
@@ -102,7 +102,7 @@ Example plot for one event
 
 ### **Metrics — D2**
 
-=== FOURCASTNET vs GRAPHCAST — D2 Metrics ===
+=== FOURCASTNET vs GRAPHCAST — D2 Average Metrics ===
 | Metric          | FourCastNet   | GraphCast   |
 |:----------------|:--------------|:------------|
 | Hits            | 9             | 9           |
@@ -128,7 +128,7 @@ Example plot for one event
 
 ### **Metrics — D4**
 
-=== FOURCASTNET vs GRAPHCAST — D4 Metrics ===
+=== FOURCASTNET vs GRAPHCAST — D4 Average Metrics ===
 
 | Metric          | FourCastNet   | GraphCast   |
 |:----------------|:--------------|:------------|
@@ -154,7 +154,7 @@ Example plot for one event
 ![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_1973102718_19731027_1800_D6.png)
 
 ### **Metrics — D6**
-=== 🔍 FOURCASTNET vs GRAPHCAST — D6 Metrics ===
+=== 🔍 FOURCASTNET vs GRAPHCAST — D6 Average Metrics ===
 
 | Metric          | FourCastNet   | GraphCast   |
 |:----------------|:--------------|:------------|
@@ -179,7 +179,7 @@ Example plot for one event
 ![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_graphcast_1973102718_19731027_1800_D10.png)
 
 ### **Metrics — D10**
-=== FOURCASTNET vs GRAPHCAST — D10 Metrics ===
+=== FOURCASTNET vs GRAPHCAST — D10 Average Metrics ===
 
 | Metric          | FourCastNet   | GraphCast   |
 |:----------------|:--------------|:------------|
