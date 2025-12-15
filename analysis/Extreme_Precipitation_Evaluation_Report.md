@@ -206,18 +206,7 @@ All the data in the tables below, are the averages, and the average extreme pixe
 | FAR             | 0.991         | 0.989       |
 | Peak Ratio      | 2.77          | 2.31        |
 | Peak Shift (km) | 543.7 km      | 482.0 km    |
----
 
-
-
-
-
-**Figure FourCastNet D10 (240h) forecast vs ERA5**
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_GC_FC_vs_ERA5_20231221_0000_D1.png)
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_GC_FC_vs_ERA5_20231221_0000_D2.png)
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_GC_FC_vs_ERA5_20231221_0000_D4.png)
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_GC_FC_vs_ERA5_20231221_0000_D6.png)
-![Total precipitation forecast for 2023-12-21 00:00](./plots/tp_case_GC_FC_vs_ERA5_20231221_0000_D10.png)
 ---
 
 # 7. Summary & Conclusions
