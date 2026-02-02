@@ -51,7 +51,7 @@ That document includes:
 
 A full technical overview—including **setup guides**, **input/output formats**, and **evaluation workflows**—is provided in the supplementary documentation:
 
-👉 [**FoureCastNet**](https://github.com/vasileios27/GeoML-Lab/blob/main/containers/fourcastnet/README.md)
+👉 [**FoureCastNet**](https://github.com/vasileios27/GeoML-Lab/blob/main/containers/fourcastnet/README.md)  
 👉 [**GraphCast**](https://github.com/vasileios27/GeoML-Lab/blob/main/containers/graphcast/README.md)
 
 That page contains:
