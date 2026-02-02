@@ -51,13 +51,14 @@ That document includes:
 
 A full technical overview—including **setup guides**, **input/output formats**, and **evaluation workflows**—is provided in the supplementary documentation:
 
-👉 [**Model Documentation and Implementation Guide**](https://github.com/vasileios27/GeoML-Lab/blob/main/ai_forecasting/AI_Forecastong_README.md)
+👉 [**FoureCastNet**](https://github.com/vasileios27/GeoML-Lab/blob/main/containers/fourcastnet/README.md)
+👉 [**GraphCast**](https://github.com/vasileios27/GeoML-Lab/blob/main/containers/graphcast/README.md)
 
 That page contains:
 
 * Installation and environment setup for each model
 * Data preprocessing workflow using ERA5 reanalysis
-* Evaluation metrics (MCC, CSI, ROC, BSS, RPSS)
+* Evaluation metrics (SSIM, RMSE, Bias, CSI, aggragated metrics)
 * Benchmark scripts for comparing extreme-forecast performance
 
 
