@@ -1,15 +1,6 @@
-Perfect — here’s your **updated `ai_forecasting/README.md`**, now including a clear new section titled
-📤 **Model Output Structure (Example: FourCastNet)**
-that incorporates your detailed cfgrib explanation in a polished and professional format, consistent with your lab’s documentation style.
-
----
-
-# 🌦️ GeoML-Lab API — Multi-Model Framework
-
 ## 🧭 General Description
 
-All supported AI models — including **GraphCast**, **Pangu-Weather**, — are deployed as **individual containers**.
-Each container exposes a consistent **FastAPI interface** for inference, health checks, and NetCDF file handling, enabling side-by-side benchmarking and interoperability.
+Supported AI models — including **GraphCast**, **FourVatNet**, 
 
 The system architecture is designed for:
 
@@ -18,22 +9,7 @@ The system architecture is designed for:
 * **Scalability:** Ready for local, cluster, or cloud-based deployment
 * **Transparency:** Each model can be independently validated against ERA5 or observational datasets
 
----
-
-## 🔁 API Workflow Overview
-
-Each container follows the same pipeline:
-
-1. **Input ingestion** — User uploads a NetCDF file (ERA5 or observational data).
-2. **Model selection** — The request specifies the AI model (e.g., `GraphCast`, `Pangu-Weather`).
-3. **Inference execution** — The model predicts future atmospheric variables.
-4. **Output handling** — Results are returned as NetCDF files, ready for visualization or evaluation.
-
-<p align="center">  
-<img src="../plots/GeoML_API_Pipeline.png" alt="ERA5 Data Pipeline Diagram" width="700"/>  
-</p>
-
----
+Settign up ecah model can b
 
 ## ⚙️ Comparative Forecasting of Extreme Weather: AI Models
 
