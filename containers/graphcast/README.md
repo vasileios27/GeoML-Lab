@@ -62,7 +62,7 @@ DeepMind's Haiku library is required by GraphCast.
 Compatible version:
 
 ```bash
-pip install dm-haiku==0.0.12
+pip install git+https://github.com/deepmind/dm-haiku
 ```
 
 Verification:

@@ -134,10 +134,3 @@ You should see a line like:
 ```
 
 That confirms Earthkit will now **always save all data** (CDS downloads, GRIB files, etc.) in your specified folder.
-
-
-## 4. Running inference
-
-```bash
-
-```
