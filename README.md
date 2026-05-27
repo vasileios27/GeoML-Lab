@@ -20,17 +20,22 @@ The project focuses on the evaluation and application of advanced AI models for 
 
 ---
 
-### AI Models Selected for Medium-Range Extreme Forecasting
+### AI Models Selected for Medium-Range Extreme Weather Forecasting
 
-The following AI models will be evaluated for their capability to forecast **severe precipitation and other extreme weather events** within the **medium-range (1–15 days)** window.
-Each model was selected based on its performance in recent peer-reviewed studies and its potential for transferability to reanalysis-driven training (e.g., ERA5).
+The following state-of-the-art global weather forecasting models are considered for evaluating their potential in **medium-range extreme weather forecasting**, with particular focus on **total precipitation (`tp`)** and severe precipitation events.
 
-| Model                             |  Input Data               | Forecast Range               | Reference      |
-| --------------------------------- | ------------------------- | ---------------------------- | -------------- |
-| **FoureCastNet**                  |  ERA5 Reanalysis          | 6 h → 10 days  | [*Pathak et al., 2022*](https://doi.org/10.48550/arXiv.2202.11214) |
-| **GraphCast**                     |  ERA5 Reanalysis          | 6 h → 10 days  | [*Lam et al., 2023*](https://doi.org/10.1126/science.adi2336)     |
-| **FourCastNetV2**           | ERA5 Reanalysis (0.25°)   | 6 h → 10 days        |   [*Pathak et al., 2022*](https://doi.org/10.48550/arXiv.2202.11214)  |
-| **Pangu-Weather**                 | ERA5 Reanalysis (0.25°)   | 1 h → 7 days** | [Bi et al., 2023](https://doi.org/10.48550/arXiv.2211.02556)     |
+The table highlights the main input/output variables reported for each model and whether total precipitation is directly included.
+
+| Model / Paper | Variables | Tags |
+| --- | --- | --- |
+| **GraphCast** — [Learning skillful medium-range global weather forecasting](https://doi.org/10.1126/science.adi2336) | **Atmospheric:** `z`, `q`, `t`, `u`, `v`, `w` <br> **Surface:** `2t`, `10u`, `10v`, `msl`, `tp` | `#GraphCast` <br> `#tp` |
+| **GenCast** — Probabilistic weather forecasting with machine learning | **Atmospheric:** `z`, `q`, `t`, `u`, `v`, `w` <br> **Surface:** `2t`, `10u`, `10v`, `msl`, `sst`, `tp` <br> **Static:** `z`, `lsm`, latitude, longitude, local time of day, elapsed year progress | `#GenCast` <br> `#tp` |
+| **FourCastNet** — [A Global Data-driven High-resolution Weather Model using Adaptive Fourier Neural Operators](https://doi.org/10.48550/arXiv.2202.11214) | **Atmospheric:** `z`, `t`, `u`, `v`, `RH` <br> **Surface:** `2t`, `10u`, `10v`, `msl`, `sp`, `mlsp`, `tp` <br> **Integrated:** `TCWV` | `#FourCastNet` <br> `#tp` |
+| **Pangu-Weather** — [Accurate medium-range global weather forecasting with 3D neural networks](https://doi.org/10.1038/s41586-023-06185-3) | **Atmospheric:** `z`, `q`, `t`, `u`, `v` <br> **Surface:** `2t`, `10u`, `10v`, `mslp` | `#PanguWeather` <br> `#No-tp` |
+| **FengWu** — FengWu: Pushing the Skillful Global Medium-range Weather Forecast beyond 10 Days Lead | **Pressure levels:** `z`, `r`, `u`, `v`, `t` <br> **Surface:** `t2m`, `u10`, `v10`, `msl` | `#FengWu` <br> `#No-tp` |
+| **SFNO** — Spherical Fourier Neural Operators: Learning Stable Dynamics on the Sphere | **Surface:** `10u`, `10v`, `2t`, `sp`, `msl`, `TCWV`, `100U`, `100V` <br> **Pressure levels:** `Z`, `T`, `U`, `V`, `R` | `#SFNO` <br> `#No-tp` |
+| **Keisler GNN** — Forecasting Global Weather with Graph Neural Networks | `T`, `Z`, `Q`, `U`, `V`, `W` | `#Keisler` <br> `#No-tp` |
+| **Aurora** — A Foundation Model for the Earth System | **Atmospheric:** `z`, `q`, `t`, `u`, `v` <br> **Surface:** `2t`, `10u`, `10v`, `msl` <br> **Static:** `z`, `lsm`, `slt` | `#Aurora` <br> `#No-tp` |
 
 ---
 ### What We Define as an Extreme Event
