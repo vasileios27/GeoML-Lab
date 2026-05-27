@@ -22,7 +22,7 @@ The project focuses on the evaluation and application of advanced AI models for 
 
 ### AI Models Selected for Medium-Range Extreme Weather Forecasting
 
-The following state-of-the-art global weather forecasting models are considered for evaluating their potential in **medium-range extreme weather forecasting**, with particular focus on **total precipitation (`tp`)** and severe precipitation events.
+The following state-of-the-art global weather forecasting models are considered for evaluating their potential in medium-range extreme weather forecasting, with particular focus on total precipitation (`tp`) and severe precipitation events.
 
 The table highlights the main input/output variables reported for each model and whether total precipitation is directly included.
 
