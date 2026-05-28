@@ -135,17 +135,6 @@ The heatmap reveals a clear and physically meaningful pattern:
 
 ---
 
-## 📁 Plot Files
-
-Place the following plot files in `./plots/` to populate this document:
-
-| File | Contents |
-|---|---|
-| `verification_metrics.png` | RMSE, Bias, SSIM vs lead time — 4 return-period rows × 3 metric columns |
-| `seeps.png` | (1 − SEEPS) vs lead time — 4 return-period panels |
-
----
-
 ## 🧾 License
 
 © 2025 Vasileios Vatellis — **GeoML-Lab Initiative**  
