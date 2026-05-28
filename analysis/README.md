@@ -109,7 +109,7 @@ where each component is normalised to the range [0, 1] before multiplication (0 
 
 To compare the two models directly, we compute the **delta score**:
 
-$$\Delta\text{score} = \text{score}_{rbs}^{\,\text{FourCastNet}} - \text{score}_{rbs}^{\,\text{GraphCast}}$$
+$$\Delta\text{score} = \text{score}_{rbs}^{\text{FourCastNet}} - \text{score}_{rbs}^{\text{GraphCast}}$$
 
 A **negative Δ score (blue)** means GraphCast outperforms FourCastNet. A **positive Δ score (red)** means FourCastNet outperforms GraphCast.
 
