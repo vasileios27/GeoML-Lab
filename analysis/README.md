@@ -86,7 +86,7 @@ The comparison is based on four standard precipitation verification metrics, eva
 ### SEEPS Skill Score
 
 <p align="center">
-  <img src="./plots/seeps_skill_all_return_levels.png" alt="SEEPS skill score for FourCastNet and GraphCast" width="1000"/>
+  <img src="../plots/seeps_skill_all_return_levels.png" alt="SEEPS skill score for FourCastNet and GraphCast" width="1000"/>
 </p>
 
 > *(1 − SEEPS) skill score versus lead time for FourCastNet (blue) and GraphCast (orange), shown for non-extreme, 10-year, 20-year, and 50-year return-level event classes.*
