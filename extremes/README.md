@@ -123,7 +123,7 @@ Each file contains the GEV-fitted return level for 6-hour accumulated total prec
 ### Threshold Masks (10 / 20 / 50-year return levels)
 
 <p align="center">
-  <img src="../plots/tp_thr.png" alt="EVA threshold masks 10/20/50-year return levels" width="700"/>
+  <img src="../plots/tp_thr.png" alt="EVA threshold masks 10/20/50-year return levels" width="1000"/>
 </p>
 
 > *Left: 10-year return level. Centre: 20-year return level. Right: 50-year return level.*  
