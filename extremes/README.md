@@ -17,13 +17,18 @@ These definitions form the foundation for:
 
 ## 📈 General Definition
 
-An **extreme event** is defined as an atmospheric or hydrological phenomenon that **significantly deviates from the local climatological distribution**, typically beyond a specified percentile threshold.
-In most analyses, GeoML-Lab uses Extreme Value Analysis (EVA):
+An **extreme event** is defined as an atmospheric or hydrological phenomenon that **significantly deviates from the local climatological distribution**, typically beyond a specified percentile threshold. Thresholds are computed locally at each grid point to account for spatial heterogeneity across the study domain.
 
-* **Upper-tail extremes:** 95th percentile (e.g., heavy rain, heatwaves, high wind)
-* **Lower-tail extremes:** 1st–5th percentile (e.g., cold spells, low pressure anomalies)
+* **Upper-tail extremes:** typically above the 90th–99th percentile (e.g., heavy rain, heatwaves, high wind)
+* **Lower-tail extremes:** typically below the 1st–5th percentile (e.g., cold spells, low-pressure anomalies)
 
-All thresholds are computed over a **long-term reference climatology (1970–2023)** using **ERA5 reanalysis** data and the Python package `pyextremes`.
+For a rigorous statistical characterisation of rare events, GeoML-Lab uses **Extreme Value Analysis (EVA)**, which goes beyond simple percentile thresholds and estimates return levels associated with specific recurrence frequencies (e.g., 10-, 20-, and 50-year events).
+
+### Definition Used in This Study
+
+For precipitation-related extremes, the analysis focuses on **upper-tail events** defined using EVA applied to ERA5 total precipitation. Thresholds are derived from a long-term climatological period spanning **1970 to 2023**, ensuring that extremes are identified relative to local climatic conditions.
+
+Specifically, the EVA uses **annual block maxima** extracted above the **90th percentile** of each grid-point time series, and fits a **Generalised Extreme Value (GEV) distribution** to those maxima. This enables the estimation of **return levels** associated with rare events — 10-, 20-, and 50-year return periods — along with diagnostic assessments of distributional fit. The methodology is implemented using the [`pyextremes`](https://georgebv.github.io/pyextremes/) Python package.
 
 ---
 
@@ -92,9 +97,9 @@ Frequency distribution for the selected grid point:
 
 ## 🌧️ Categories of Extreme Events
 
-| Type | Definition | Typical Threshold | Relevant Variables |
-| ---- | ---------- | ----------------- | ------------------ |
-| **Extreme Precipitation** | The accumulated liquid and frozen water, comprising rain and snow, that falls to the Earth's surface | >95th percentile of total precipitation (`tp`) | `tp`, `cape`, `tcwv` |
+| Type | Definition | Threshold (this study) | Relevant Variables |
+| ---- | ---------- | ---------------------- | ------------------ |
+| **Extreme Precipitation** | The accumulated liquid and frozen water, comprising rain and snow, that falls to the Earth's surface | EVA-derived 10/20/50-year return level of 6-hour accumulated `tp` | `tp`, `cape`, `tcwv` |
 
 👉 [**tp parameter detail**](https://codes.ecmwf.int/grib/param-db/228)
 > Note: In ERA5 reanalysis, accumulation variables represent the amount accumulated over the last hour, ending at the timestamp selected.
