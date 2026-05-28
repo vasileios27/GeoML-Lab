@@ -112,11 +112,19 @@ The EVA produces three spatially explicit threshold grids — one per return per
 
 ### Threshold Files
 
-| Return Period | NetCDF File |
-|---|---|
-| 10-year | [`GR_tp_threshold_rl10_BM.nc`](./GR_tp_threshold_rl10_BM.nc) |
-| 20-year | [`GR_tp_threshold_rl20_BM.nc`](./GR_tp_threshold_rl20_BM.nc) |
-| 50-year | [`GR_tp_threshold_rl50_BM.nc`](./GR_tp_threshold_rl50_BM.nc) |
+<p align="center">
+<table>
+  <thead>
+    <tr><th align="center">Return Period</th><th align="center">NetCDF File</th></tr>
+  </thead>
+  <tbody>
+    <tr><td align="center">10-year</td><td align="center"><a href="./GR_tp_threshold_rl10_BM.nc"><code>GR_tp_threshold_rl10_BM.nc</code></a></td></tr>
+    <tr><td align="center">20-year</td><td align="center"><a href="./GR_tp_threshold_rl20_BM.nc"><code>GR_tp_threshold_rl20_BM.nc</code></a></td></tr>
+    <tr><td align="center">50-year</td><td align="center"><a href="./GR_tp_threshold_rl50_BM.nc"><code>GR_tp_threshold_rl50_BM.nc</code></a></td></tr>
+  </tbody>
+</table>
+</p>
+
 
 Each file contains the GEV-fitted return level for 6-hour accumulated total precipitation (units: m), computed using annual block maxima over 1970–2023. These grids are used as spatial masks to identify forecasted or observed extreme precipitation pixels.
 
