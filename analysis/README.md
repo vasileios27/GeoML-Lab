@@ -66,7 +66,10 @@ The comparison is based on four standard precipitation verification metrics, eva
 ### RMSE, Bias and SSIM
 
 <p align="center">
-  <img src="./plots/verification_metrics.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="1000"/>
+  <img src="../plots/metrics_vs_lead_non_extreme.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="800"/>
+  <img src="../plots/metrics_vs_lead_rp10.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="800"/>
+  <img src="../plots/metrics_vs_lead_rp20.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="800"/>
+  <img src="../plots/metrics_vs_lead_rp50.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="800"/>
 </p>
 
 > *Verification metrics versus lead time for FourCastNet (blue) and GraphCast (orange), shown for four event classes: non-extreme (top), 10-year return level, 20-year return level, and 50-year return level (bottom). Left column: RMSE. Centre: Bias. Right: SSIM.*
@@ -83,7 +86,7 @@ The comparison is based on four standard precipitation verification metrics, eva
 ### SEEPS Skill Score
 
 <p align="center">
-  <img src="./plots/seeps.png" alt="SEEPS skill score for FourCastNet and GraphCast" width="1000"/>
+  <img src="./plots/seeps_skill_all_return_levels.png" alt="SEEPS skill score for FourCastNet and GraphCast" width="1000"/>
 </p>
 
 > *(1 − SEEPS) skill score versus lead time for FourCastNet (blue) and GraphCast (orange), shown for non-extreme, 10-year, 20-year, and 50-year return-level event classes.*
@@ -94,102 +97,6 @@ The comparison is based on four standard precipitation verification metrics, eva
 - For **non-extreme events**, FourCastNet shows slightly better SEEPS at 4-day lead time.
 - Both models show rapidly degrading SEEPS with increasing lead time, particularly for the most extreme event categories. At 10-day lead time the skill score becomes negative for several categories, indicating performance below the climatological reference.
 - The **10-year and 50-year return-level** panels show the clearest separation between the two models, with GraphCast maintaining positive skill scores at shorter lead times where FourCastNet has already deteriorated.
-
----
-
-## 🌊 Forecast-to-Impact Evaluation
-
-The trained impact classifier (AdaBoost, binary; CatBoost, 3-class) was connected to forecast-derived precipitation from both models. Forecasted total precipitation was first screened against the EVA-derived return-level masks to identify extreme pixels over Greece, which were then translated to NUTS2 regions and combined with socio-economic variables for impact classification.
-
-Four Greek EM-DAT flood events overlapping with the EVA extreme-event catalogue were used for evaluation.
-
-### Binary Impact Detection
-
-The table below reports whether the workflow predicted **impact (1)** or **no impact (0)** for each event and forecasting window. All events are known-impact cases, so the experiment tests recall — whether the workflow recovers already-documented impacts.
-
-<p align="center">
-<table>
-  <thead>
-    <tr>
-      <th align="center" rowspan="2">EM-DAT Event</th>
-      <th align="center" colspan="5">GraphCast</th>
-      <th align="center" colspan="5">FourCastNet</th>
-    </tr>
-    <tr>
-      <th align="center">D1</th><th align="center">D2</th><th align="center">D4</th><th align="center">D6</th><th align="center">D10</th>
-      <th align="center">D1</th><th align="center">D2</th><th align="center">D4</th><th align="center">D6</th><th align="center">D10</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td align="center">2003-0044-GRC</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">0</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td></tr>
-    <tr><td align="center">2014-0419-GRC</td><td align="center">0</td><td align="center">0</td><td align="center">1</td><td align="center">0</td><td align="center">1</td><td align="center">0</td><td align="center">0</td><td align="center">0</td><td align="center">0</td><td align="center">0</td></tr>
-    <tr><td align="center">2016-0334-GRC</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">0</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">0</td></tr>
-    <tr><td align="center">2023-0582-GRC</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td></tr>
-  </tbody>
-</table>
-</p>
-
-> D1–D10 refer to forecasting windows of 1, 2, 4, 6, and 10 days ahead.
-
-**Summary:** Across D1–D10, **GraphCast predicted impact in 15 out of 20** known-impact cases; **FourCastNet in 14 out of 20**. Both models perform well at short lead times, with missed detections becoming more frequent at longer windows.
-
----
-
-### Three-Class Severity Prediction
-
-The same forecast-derived features were evaluated with the 3-class classifier, predicting **no impact**, **low impact**, or **high impact** for each NUTS2 region.
-
-<p align="center">
-<table>
-  <thead>
-    <tr>
-      <th align="center" colspan="7">GraphCast</th>
-    </tr>
-    <tr>
-      <th align="center">EM-DAT Event</th><th align="center">True</th><th align="center">D1</th><th align="center">D2</th><th align="center">D4</th><th align="center">D6</th><th align="center">D10</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td align="center">2003-0044-GRC</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">no</td></tr>
-    <tr><td align="center">2014-0419-GRC</td><td align="center">high</td><td align="center">no</td><td align="center">low</td><td align="center">no</td><td align="center">no</td><td align="center">low</td></tr>
-    <tr><td align="center">2016-0334-GRC</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">no</td><td align="center">no</td><td align="center">no</td></tr>
-    <tr><td align="center">2023-0582-GRC</td><td align="center">high</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">no</td></tr>
-  </tbody>
-</table>
-</p>
-
-<p align="center">
-<table>
-  <thead>
-    <tr>
-      <th align="center" colspan="7">FourCastNet</th>
-    </tr>
-    <tr>
-      <th align="center">EM-DAT Event</th><th align="center">True</th><th align="center">D1</th><th align="center">D2</th><th align="center">D4</th><th align="center">D6</th><th align="center">D10</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td align="center">2003-0044-GRC</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">no</td></tr>
-    <tr><td align="center">2014-0419-GRC</td><td align="center">high</td><td align="center">no</td><td align="center">no</td><td align="center">no</td><td align="center">no</td><td align="center">no</td></tr>
-    <tr><td align="center">2016-0334-GRC</td><td align="center">low</td><td align="center">low</td><td align="center">high</td><td align="center">no</td><td align="center">no</td><td align="center">no</td></tr>
-    <tr><td align="center">2023-0582-GRC</td><td align="center">high</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">low</td><td align="center">no</td></tr>
-  </tbody>
-</table>
-</p>
-
-**Summary:** Across D1–D10, **GraphCast predicted the exact severity class in 6 out of 20** cases; **FourCastNet in 5 out of 20**. Most correct severity predictions correspond to low-impact events. High-impact events were frequently predicted as low impact or no impact, consistent with the general tendency of data-driven models to underestimate extreme intensities.
-
----
-
-## 🔑 Key Findings
-
-**GraphCast outperforms FourCastNet overall.** The advantage is consistent across RMSE, SSIM, and SEEPS, and across most return-period categories and lead times. The gap widens for rarer, more extreme event classes.
-
-**Both models underestimate extreme precipitation.** Negative bias across all categories confirms the well-known difficulty of data-driven models in capturing localised, high-intensity rainfall — a consequence of applying global Gaussian normalisation to a non-Gaussian variable.
-
-**Skill degrades with both lead time and event rarity.** SEEPS turns negative beyond approximately 4–6 days for the most extreme categories, indicating the limits of useful precipitation skill at medium range for rare events.
-
-**Binary impact detection is more reliable than severity classification.** The forecast-to-impact workflow can detect whether a known flood event produces a regional impact signal reasonably well at short lead times. Distinguishing low-impact from high-impact cases remains difficult, primarily due to the small number of overlapping events and the models' tendency to smooth extreme spatial patterns.
 
 ---
 
