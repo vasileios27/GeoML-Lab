@@ -66,10 +66,10 @@ The comparison is based on four standard precipitation verification metrics, eva
 ### RMSE, Bias and SSIM
 
 <p align="center">
-  <img src="../plots/metrics_vs_lead_non_extreme.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="800"/>
-  <img src="../plots/metrics_vs_lead_rp10.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="800"/>
-  <img src="../plots/metrics_vs_lead_rp20.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="800"/>
-  <img src="../plots/metrics_vs_lead_rp50.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="800"/>
+  <img src="../plots/metrics_vs_lead_non_extreme.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="1000"/>
+  <img src="../plots/metrics_vs_lead_rp10.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="1000"/>
+  <img src="../plots/metrics_vs_lead_rp20.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="1000"/>
+  <img src="../plots/metrics_vs_lead_rp50.png" alt="RMSE, Bias and SSIM for FourCastNet and GraphCast" width="1000"/>
 </p>
 
 > *Verification metrics versus lead time for FourCastNet (blue) and GraphCast (orange), shown for four event classes: non-extreme (top), 10-year return level, 20-year return level, and 50-year return level (bottom). Left column: RMSE. Centre: Bias. Right: SSIM.*
@@ -99,7 +99,7 @@ The comparison is based on four standard precipitation verification metrics, eva
 - The **10-year and 50-year return-level** panels show the clearest separation between the two models, with GraphCast maintaining positive skill scores at shorter lead times where FourCastNet has already deteriorated.
 
 ---
-## 🧮 Aggregated Skill Score: score_rbs
+## 📈 Aggregated Skill Score: score_rbs
 
 Individual metrics (RMSE, Bias, SSIM) each capture a different dimension of forecast quality. To obtain a single comparable summary across models, return periods, and lead times, we define an **aggregated skill score**:
 
