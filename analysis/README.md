@@ -99,6 +99,41 @@ The comparison is based on four standard precipitation verification metrics, eva
 - The **10-year and 50-year return-level** panels show the clearest separation between the two models, with GraphCast maintaining positive skill scores at shorter lead times where FourCastNet has already deteriorated.
 
 ---
+## 🧮 Aggregated Skill Score: score_rbs
+
+Individual metrics (RMSE, Bias, SSIM) each capture a different dimension of forecast quality. To obtain a single comparable summary across models, return periods, and lead times, we define an **aggregated skill score**:
+
+$$\text{score}_{rbs} = |\text{SSIM}| \times |\text{RMSE}| \times |\text{Bias}|$$
+
+where each component is normalised to the range [0, 1] before multiplication (0 = minimum skill, 1 = maximum skill). The product penalises a model simultaneously for poor spatial structure, large errors, and systematic bias.
+
+To compare the two models directly, we compute the **delta score**:
+
+$$\Delta\text{score} = \text{score}_{rbs}^{\,\text{FourCastNet}} - \text{score}_{rbs}^{\,\text{GraphCast}}$$
+
+A **negative Δ score (blue)** means GraphCast outperforms FourCastNet. A **positive Δ score (red)** means FourCastNet outperforms GraphCast.
+
+### Δ Score Heatmap
+
+<p align="center">
+  <img src="../plots/delta_score.png" alt="Delta score heatmap FourCastNet minus GraphCast" width="700"/>
+</p>
+
+> *Heatmap of Δ score (FourCastNet − GraphCast) across return periods (y-axis) and lead times in days (x-axis). Blue cells indicate GraphCast superiority; red cells indicate FourCastNet superiority.*
+
+### Interpretation
+
+The heatmap reveals a clear and physically meaningful pattern:
+
+**For non-extreme events (bottom row), FourCastNet is consistently better** than GraphCast across all lead times (Δ scores of +0.028 to +0.024), suggesting that FourCastNet's AFNO architecture may retain an advantage in the background precipitation regime.
+
+**For extreme events, GraphCast is consistently better**, and the advantage grows with event rarity. At the 50-year return level and short lead times the gap reaches **Δ = −0.044** at D1 — the largest single difference in the matrix. This is consistent with GraphCast's GNN architecture being better at preserving spatial structure and capturing long-range dependencies that are critical for rare, localised precipitation extremes.
+
+**The Δ score converges to 0.000 at longer lead times for extreme categories** (D6 and D10 for 20- and 50-year events), reflecting the point at which neither model can reliably resolve the precipitation signal associated with rare events — both effectively reduce to the same climatological baseline.
+
+**For 10-year events, FourCastNet briefly outperforms GraphCast at D6** (Δ = +0.013), the only reversal among the extreme categories, suggesting some variability in model behaviour at intermediate rarity and medium lead times.
+
+---
 
 ## 📁 Plot Files
 
