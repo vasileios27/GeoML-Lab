@@ -106,40 +106,36 @@ Frequency distribution for the selected grid point:
 
 ---
 
-## 🗺️ ERA5 Threshold over Greece for Total Precipitation
+## 🗺️ EVA Threshold Maps over Greece
+
+The EVA produces three spatially explicit threshold grids — one per return period — stored as NetCDF files and visualised below. Each grid contains the locally estimated return level at every ERA5 grid point over the Greek domain (34°–42° N, 19°–28° E, 33×37 grid).
+
+### Threshold Files
+
+| Return Period | NetCDF File |
+|---|---|
+| 10-year | [`GR_tp_threshold_rl10_BM.nc`](./GR_tp_threshold_rl10_BM.nc) |
+| 20-year | [`GR_tp_threshold_rl20_BM.nc`](./GR_tp_threshold_rl20_BM.nc) |
+| 50-year | [`GR_tp_threshold_rl50_BM.nc`](./GR_tp_threshold_rl50_BM.nc) |
+
+Each file contains the GEV-fitted return level for 6-hour accumulated total precipitation (units: m), computed using annual block maxima over 1970–2023. These grids are used as spatial masks to identify forecasted or observed extreme precipitation pixels.
+
+### Threshold Masks (10 / 20 / 50-year return levels)
 
 <p align="center">
-  <img src="../plots/threshold_plot.png" alt="tp threshold plot" width="700"/>
+  <img src="../plots/tp_thr.png" alt="EVA threshold masks 10/20/50-year return levels" width="700"/>
 </p>
 
-The figure above shows the threshold values of total precipitation (`tp_q95_alltime`) across Greece, calculated for each grid point. These thresholds serve as reference levels for identifying local extremes. During analysis, any grid cell exceeding its corresponding threshold is marked as an extreme grid point. If more than 150 grid points are classified as extreme in a single time snapshot, that day is defined as an extreme precipitation day.
+> *Left: 10-year return level. Centre: 20-year return level. Right: 50-year return level.*  
+> Colour scale shows 6-hour accumulated total precipitation (m, log scale).
 
-The figure below presents the monthly frequency of extreme precipitation days identified across Greece, based on the threshold exceedance criterion described above.
-
-<p align="center">
-  <img src="../plots/Frequency_of_Extreme_Days_per_Month.png" alt="Frequency of Extreme" width="700"/>
-</p>
-
-The following figure illustrates an example of an extreme precipitation event over Greece, as identified by the threshold-based detection method. It shows the spatial distribution of total precipitation for a selected extreme day, highlighting the regions that experienced the most intense rainfall.
-
-<p align="center">
-  <img src="../plots/extreme_tp.png" alt="Extreme tp example" width="700"/>
-</p>
+Higher return-period thresholds are more spatially concentrated in the orographically complex western and northern regions of Greece, reflecting the stronger influence of terrain on extreme precipitation.
 
 ---
 
 ## 📅 EVA-Derived Extreme Event Catalogue
 
-Extreme time stamps are grouped by estimated return period. The spatial identification is performed on a grid-point basis over the Greek domain (34°–42° N, 19°–28° E) on a 33×37 grid. A time stamp is classified as extreme when more than 10 grid points simultaneously exceed their locally defined EVA threshold.
-
-The threshold masks for all three return-period categories are shown below.
-
-<p align="center">
-  <img src="../plots/threshold_masks.png" alt="Threshold masks 10/20/50-year" width="700"/>
-</p>
-
-> *Left: 10-year return level. Centre: 20-year return level. Right: 50-year return level.*  
-> Colour scale shows 6-hour accumulated total precipitation (m, log scale).
+Extreme time stamps are grouped by estimated return period. A time stamp is classified as extreme when more than 10 grid points across the Greek domain simultaneously exceed their locally defined EVA return-level threshold.
 
 ### ≥ 50-Year Return Level Events
 
